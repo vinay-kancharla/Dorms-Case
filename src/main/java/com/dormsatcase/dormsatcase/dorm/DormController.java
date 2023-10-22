@@ -14,7 +14,7 @@ public class DormController {
     private DormService dormService;
 
     @GetMapping("/get")
-    public String get(@RequestParam("dormName") String dormName) {
+    public Dorm get(@RequestParam("dormName") String dormName) {
         return dormService.get(dormName);
     }
 
