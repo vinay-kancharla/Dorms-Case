@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import dorms from "../dummy_data/dorms.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faMagnifyingGlass, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const NavigationBar = () => {
   const options = dorms;
@@ -21,13 +21,16 @@ const NavigationBar = () => {
   return (
     <Navbar expand="lg" bg="primary">
       <Container className="d-flex justify-content-between">
-        <Nav className="flex-column">
+        <Nav className="flex-column flex-column">
           <NavDropdown
             title={<FontAwesomeIcon icon={faBars} />}
             id="basic-nav-dropdown"
+            style={{ minWidth: '250px' }}
           >
             {Object.entries(options).map(([experience, dorms]) => (
-              <NavDropdown
+              <div style={{display: 'inline-block'}}>
+                <span style={{ display: 'inline-block' }}>
+                <NavDropdown
                 title={experience}
                 id={`${experience}-dropdown`}
                 key={experience}
@@ -42,6 +45,13 @@ const NavigationBar = () => {
                   </NavDropdown.Item>
                 ))}
               </NavDropdown>
+                </span>
+                <span style={{ display: 'inline-block' }}>
+                <Link to={`/experience/${experience.replaceAll(" ", "")}`}>
+                  <FontAwesomeIcon icon={ faArrowRight}/>  
+                </Link>
+                </span>
+              </div>
             ))}
           </NavDropdown>
         </Nav>
