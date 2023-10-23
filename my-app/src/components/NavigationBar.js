@@ -38,7 +38,7 @@ const NavigationBar = () => {
                     key={dorm}
                     onClick={() => handleDormPage(dorm)}
                   >
-                    <Link to={`/dorm/${dorm.replace(" ", "")}`}>{dorm}</Link>
+                    <Link to={`/dorm/${dorm.replaceAll(" ", "")}`}>{dorm}</Link>
                   </NavDropdown.Item>
                 ))}
               </NavDropdown>
