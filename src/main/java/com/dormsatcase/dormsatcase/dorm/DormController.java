@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/dorm")
 public class DormController {
@@ -19,12 +21,12 @@ public class DormController {
     }
 
     @GetMapping("/getAll")
-    public String getAll(@RequestParam("experience") String experience) {
-        return "Todo 2";
+    public List<Dorm> getAll(@RequestParam("experience") String experience) {
+        return dormService.getAll(experience);
     }
 
     @GetMapping("/getTopThree")
-    public String getTopThree(@RequestParam("experience") String experience) {
-        return "Todo 3";
+    public List<Dorm> getTopThree(@RequestParam("experience") String experience) {
+        return dormService.getTopThree(experience);
     }
 }

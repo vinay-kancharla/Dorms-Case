@@ -11,6 +11,22 @@ import java.util.List;
 public class DormService {
 
     public Dorm get(String dormName) {
+        return getDummy();
+    }
+
+    public List<Dorm> getAll(String experience) {
+        List<Dorm> dorms = new ArrayList<>();
+        dorms.add(getDummy());
+        return dorms;
+    }
+
+    public List<Dorm> getTopThree(String experience) {
+        List<Dorm> dorms = new ArrayList<>();
+        dorms.add(getDummy());
+        return dorms;
+    }
+
+    private Dorm getDummy() {
         Dorm dorm = new Dorm();
         dorm.setName("Kusch");
         dorm.setExperience("SECOND_YEAR");
