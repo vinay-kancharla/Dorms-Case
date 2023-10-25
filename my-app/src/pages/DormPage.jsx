@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import DormPages from '../components/DormPages.js';
 import NavigationBar from '../components/NavigationBar';
+
 export default function DormPage() {
     const { dormId } = useParams();
     const h1Style = {
