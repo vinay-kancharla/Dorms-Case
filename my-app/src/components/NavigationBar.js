@@ -21,7 +21,7 @@ const NavigationBar = () => {
   return (
     <Navbar expand="lg" bg="primary">
       <Container className="d-flex justify-content-between">
-        <Nav className="flex-column flex-column">
+        <Nav style={{ display: 'flex', width: '100%' }}>
           <NavDropdown
             title={<FontAwesomeIcon icon={faBars} />}
             id="basic-nav-dropdown"
@@ -48,20 +48,23 @@ const NavigationBar = () => {
                 </span>
                 <span style={{ display: 'inline-block' }}>
                 <Link to={`/experience/${experience.replaceAll(" ", "")}`}>
-                  <FontAwesomeIcon icon={ faArrowRight}/>  
+                  <FontAwesomeIcon icon={faArrowRight}/>  
                 </Link>
                 </span>
               </div>
             ))}
           </NavDropdown>
-        </Nav>
+          <div style={{ flex: 1 }}></div>
+
 
         <Navbar.Brand>
-          <Link style={{ textDecoration: 'none', outline: 'none' , color: 'inherit'}}to="/">
+          <Link style={{textDecoration: 'none', outline: 'none' , color: 'inherit'}}to="/">
           Dorms @ Case
           </Link>
         </Navbar.Brand>
-        <Nav>
+
+        <div style={{ flex: 1.5}}></div>
+
           <Nav.Link>
           <Link style={{ textDecoration: 'none', outline: 'none' , color: 'inherit'}}to="search">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
