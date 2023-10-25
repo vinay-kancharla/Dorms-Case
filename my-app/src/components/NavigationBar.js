@@ -6,9 +6,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import dorms from "../dummy_data/dorms.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMagnifyingGlass, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-
+import React, { useState } from 'react';
+import LoginModal from './LoginModal';
+import DiaWrap from '@mui/material/Dialog';
 const NavigationBar = () => {
   const options = dorms;
+  const [isLoginOpen, setLoginOpen] = useState(false);
   const handleDormPage = (dorm) => {
     // TO DO
     console.log(`Navigating to the ${dorm} page`);
@@ -18,7 +21,14 @@ const NavigationBar = () => {
     // TO DO
     console.log(`Navigating to the ${experience} page`);
   };
+
+  const loginCallback = (data) => {
+    if (data && (data.action == 'submitted' || data.action == 'cancelled' ) ){
+        setLoginOpen(false);
+    }
+}
   return (
+    <div>
     <Navbar expand="lg" bg="primary">
       <Container className="d-flex justify-content-between">
         <Nav style={{ display: 'flex', width: '100%' }}>
@@ -72,13 +82,17 @@ const NavigationBar = () => {
     
           </Nav.Link>
           <Nav.Link>
-          <Link style={{ textDecoration: 'none', outline: 'none', color: 'inherit' }} to="login">
+          <button onClick={() => setLoginOpen(true)}>
                 Login
-          </Link>
+          </button>
           </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
+    <DiaWrap open={isLoginOpen} onClose={() => loginCallback()}>
+    <LoginModal parentCallback={loginCallback} login={isLoginOpen}></LoginModal>
+    </DiaWrap>
+    </div>
   );
 };
 
