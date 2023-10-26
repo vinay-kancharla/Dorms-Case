@@ -51,13 +51,13 @@ const NavigationBar = () => {
                     key={dorm}
                     onClick={() => handleDormPage(dorm)}
                   >
-                    <Link to={`/dorm/${dorm.replaceAll(" ", "")}`}>{dorm}</Link>
+                    <Link to={`/dorm/${dorm}`}>{dorm}</Link>
                   </NavDropdown.Item>
                 ))}
               </NavDropdown>
                 </span>
                 <span style={{ display: 'inline-block' }}>
-                <Link to={`/experience/${experience.replaceAll(" ", "")}`}>
+                <Link to={`/experience/${experience}`}>
                   <FontAwesomeIcon icon={faArrowRight}/>  
                 </Link>
                 </span>
