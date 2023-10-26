@@ -44,7 +44,7 @@ const NavigationBar = () => {
               style={{ minWidth: '250px' }}
             >
               {Object.entries(options).map(([experience, dorms]) => (
-                <div style={{ display: 'inline-block' }}>
+                <div key={experience} style={{ display: 'inline-block' }}>
                   <span style={{ display: 'inline-block' }}>
                     <NavDropdown
                       title={experience}
