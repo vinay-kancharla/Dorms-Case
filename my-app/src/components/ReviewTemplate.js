@@ -1,6 +1,7 @@
 import React from 'react';
-
-const ReviewTemplate = ({ rating, reviewText, dormPicture }) => {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+const ReviewTemplate = ({ rating, reviewText, dormPicture,likes, dislikes}) => {
     return (
       <div className="review">
         <div className="star-rating">
@@ -9,9 +10,14 @@ const ReviewTemplate = ({ rating, reviewText, dormPicture }) => {
         <p className="review-text">
             Review: {reviewText}
         </p>
-        <img src={dormImage} className="dorm-picture" >
-          Images of the Dorm:
-        </img>
+        <FontAwesomeIcon icon={likes} />
+        {/* <img src={dormPicture} className="dorm-picture" /> */}
+        <div class = "likes-and-dislikes">
+          <div>
+            {likes} <FontAwesomeIcon style="color: red;" icon={faThumbsUp} />
+            {dislikes} <FontAwesomeIcon icon={faThumbsDown} />
+          </div>
+        </div>
       </div>
     );
   };
