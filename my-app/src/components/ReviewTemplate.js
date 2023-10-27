@@ -14,7 +14,7 @@ const ReviewTemplate = ({ rating, reviewText, dormPicture,likes, dislikes}) => {
         {/* <img src={dormPicture} className="dorm-picture" /> */}
         <div class = "likes-and-dislikes">
           <div>
-            {likes} <FontAwesomeIcon style="color: red;" icon={faThumbsUp} />
+            {likes} <FontAwesomeIcon icon={faThumbsUp} />
             {dislikes} <FontAwesomeIcon icon={faThumbsDown} />
           </div>
         </div>
