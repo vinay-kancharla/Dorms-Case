@@ -30,12 +30,16 @@ const DormPages = () => {
 
   const barStyle1 = {
     height: '10px',
+    position: 'absolute',
     width: '70%', 
+    top: 150,
     backgroundColor: '#000000', 
     margin: '10px 0',
   };
 
   const barStyle2 = {
+    position: 'absolute',
+    top: 180,
     height: '10px',
     width: '40%', 
     backgroundColor: '#000000',
@@ -87,7 +91,6 @@ const DormPages = () => {
         </Modal.Footer>
       </Modal>
      </div>
-
       <div style={barStyle1}></div>
       <div style={barStyle2}></div>
     </div>
