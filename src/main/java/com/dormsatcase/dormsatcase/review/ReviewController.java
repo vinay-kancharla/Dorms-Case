@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.dormsatcase.dormsatcase.dorm.Dorm;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -19,6 +25,11 @@ public class ReviewController {
 
     @Autowired
     private ReviewService reviewService;
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<JsonNode>> getAll(@RequestParam("dormName") String dormName) {
+        return reviewService.getAll(dormName);
+    }
 
     @PostMapping("/upload")
     public ResponseEntity<Void> upload(@RequestBody ReviewDTO reviewDTO) {
