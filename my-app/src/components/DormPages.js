@@ -20,9 +20,6 @@ const DormPages = () => {
     setTextReview(e.target.value);
   };
 
-  const submitReview = () => {
-    closeModal();
-  };
 
   const containerStyle = {
     display: 'flex',
@@ -84,7 +81,7 @@ const DormPages = () => {
           <Button variant="primary" onClick={closeModal}>
             Upload Image
           </Button>
-          <Button variant="success" onClick={submitReview}>
+          <Button variant="success" onClick={closeModal}>
             Validate and Publish
           </Button>
         </Modal.Footer>
