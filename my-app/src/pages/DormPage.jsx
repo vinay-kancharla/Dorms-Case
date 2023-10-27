@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import DormPages from '../components/DormPages.js';
 import NavigationBar from '../components/NavigationBar';
 import reviewsJSON from '../dummy_data/reviews.json'
+import ReviewTemplate from '../components/ReviewTemplate.js';
 export default function DormPage() {
     
     const { dormId } = useParams();
