@@ -1,6 +1,7 @@
 package com.dormsatcase.dormsatcase;
 
 import com.dormsatcase.dormsatcase.dorm.DormService;
+import com.dormsatcase.dormsatcase.review.ReviewService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

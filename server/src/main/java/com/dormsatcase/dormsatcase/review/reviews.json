@@ -1,626 +1,627 @@
 {
-    "Cutler House": [
-      {
-        "review": "Absolutely loved the vintage vibe of this place.",
-        "image": "cutler1.jpg",
-        "starrating": 4.5,
-        "like": 120,
-        "dislike": 8
-      },
-      {
-        "review": "The rooms are cozy but can get a bit noisy during weekends.",
-        "image": "cutler2.jpg",
-        "starrating": 3.5,
-        "like": 85,
-        "dislike": 25
-      }
-    ],
-    "Hitchcock House": [
-      {
-        "review": "Feels like a close-knit community. Everyone is super friendly.",
-        "image": "hitchcock1.jpg",
-        "starrating": 4.8,
-        "like": 138,
-        "dislike": 5
-      },
-      {
-        "review": "I wish the WiFi was a bit stronger on the top floors.",
-        "image": "hitchcock2.jpg",
-        "starrating": 4,
-        "like": 102,
-        "dislike": 17
-      }
-    ],
-        "Pierce House": [
-          {
-            "review": "The common areas are always clean and it's a great place to socialize.",
-            "image": "pierce1.jpg",
-            "starrating": 4.2,
-            "like": 110,
-            "dislike": 12
-          },
-          {
-            "review": "A bit away from the main campus, but the peaceful surroundings make up for it.",
-            "image": "pierce2.jpg",
-            "starrating": 3.9,
-            "like": 95,
-            "dislike": 20
-          }
-        ],
-        "Storrs House": [
-          {
-            "review": "Storrs has a unique charm. It feels like a second home.",
-            "image": "storrs1.jpg",
-            "starrating": 4.7,
-            "like": 125,
-            "dislike": 6
-          },
-          {
-            "review": "The only downside is the laundry room which gets crowded at times.",
-            "image": "storrs2.jpg",
-            "starrating": 4,
-            "like": 108,
-            "dislike": 15
-          }
-        ],
-        "Clarke Tower": [
-            {
-              "review": "The view from the higher floors is simply breathtaking.",
-              "image": "clarke_tower1.jpg",
-              "starrating": 5,
-              "like": 142,
-              "dislike": 7
-            },
-            {
-              "review": "Elevators can be slow during peak hours, but overall a great living space.",
-              "image": "clarke_tower2.jpg",
-              "starrating": 4,
-              "like": 130,
-              "dislike": 22
-            }
-          ],
-          "Norton House": [
-            {
-              "review": "I love the close proximity to campus eateries. So convenient!",
-              "image": "norton1.jpg",
-              "starrating": 4,
-              "like": 115,
-              "dislike": 14
-            },
-            {
-              "review": "Rooms are spacious and well-lit. A great choice for first-year students.",
-              "image": "norton2.jpg",
-              "starrating": 5,
-              "like": 138,
-              "dislike": 6
-            }
-          ],
-          "Raymond House": [
-            {
-              "review": "The garden area is my favorite spot to relax and study.",
-              "image": "raymond1.jpg",
-              "starrating": 4,
-              "like": 123,
-              "dislike": 11
-            },
-            {
-              "review": "The community here is vibrant. Always something happening!",
-              "image": "raymond2.jpg",
-              "starrating": 5,
-              "like": 140,
-              "dislike": 5
-            }
-          ],
-          "Sherman House": [
-            {
-              "review": "Modern amenities and super comfortable living spaces.",
-              "image": "sherman1.jpg",
-              "starrating": 5,
-              "like": 152,
-              "dislike": 4
-            },
-            {
-              "review": "The wifi can be patchy on certain floors. But overall, a solid choice.",
-              "image": "sherman2.jpg",
-              "starrating": 4,
-              "like": 127,
-              "dislike": 19
-            }
-          ],
+	"Cutler House": [
+		{
+			"review": "Absolutely loved the vintage vibe of this place.",
+			"image": "cutler1.jpg",
+			"starrating": 4,
+			"like": 120,
+			"dislike": 8
+		},
+		{
+			"review": "The rooms are cozy but can get a bit noisy during weekends.",
+			"image": "cutler2.jpg",
+			"starrating": 3,
+			"like": 85,
+			"dislike": 25
+		}
+	],
+	"Hitchcock House": [
+		{
+			"review": "Feels like a close-knit community. Everyone is super friendly.",
+			"image": "hitchcock1.jpg",
+			"starrating": 5,
+			"like": 138,
+			"dislike": 5
+		},
+		{
+			"review": "I wish the WiFi was a bit stronger on the top floors.",
+			"image": "hitchcock2.jpg",
+			"starrating": 4,
+			"like": 102,
+			"dislike": 17
+		}
+	],
+	"Pierce House": [
+		{
+			"review": "The common areas are always clean and it's a great place to socialize.",
+			"image": "pierce1.jpg",
+			"starrating": 4,
+			"like": 110,
+			"dislike": 12
+		},
+		{
+			"review": "A bit away from the main campus, but the peaceful surroundings make up for it.",
+			"image": "pierce2.jpg",
+			"starrating": 4,
+			"like": 95,
+			"dislike": 20
+		}
+	],
+	"Storrs House": [
+		{
+			"review": "Storrs has a unique charm. It feels like a second home.",
+			"image": "storrs1.jpg",
+			"starrating": 5,
+			"like": 125,
+			"dislike": 6
+		},
+		{
+			"review": "The only downside is the laundry room which gets crowded at times.",
+			"image": "storrs2.jpg",
+			"starrating": 4,
+			"like": 108,
+			"dislike": 15
+		}
+	],
+	"Clarke Tower": [
+		{
+			"review": "The view from the higher floors is simply breathtaking.",
+			"image": "clarke_tower1.jpg",
+			"starrating": 5,
+			"like": 142,
+			"dislike": 7
+		},
+		{
+			"review": "Elevators can be slow during peak hours, but overall a great living space.",
+			"image": "clarke_tower2.jpg",
+			"starrating": 4,
+			"like": 130,
+			"dislike": 22
+		}
+	],
+	"Norton House": [
+		{
+			"review": "I love the close proximity to campus eateries. So convenient!",
+			"image": "norton1.jpg",
+			"starrating": 4,
+			"like": 115,
+			"dislike": 14
+		},
+		{
+			"review": "Rooms are spacious and well-lit. A great choice for first-year students.",
+			"image": "norton2.jpg",
+			"starrating": 5,
+			"like": 138,
+			"dislike": 6
+		}
+	],
+	"Raymond House": [
+		{
+			"review": "The garden area is my favorite spot to relax and study.",
+			"image": "raymond1.jpg",
+			"starrating": 4,
+			"like": 123,
+			"dislike": 11
+		},
+		{
+			"review": "The community here is vibrant. Always something happening!",
+			"image": "raymond2.jpg",
+			"starrating": 5,
+			"like": 140,
+			"dislike": 5
+		}
+	],
+	"Sherman House": [
+		{
+			"review": "Modern amenities and super comfortable living spaces.",
+			"image": "sherman1.jpg",
+			"starrating": 5,
+			"like": 152,
+			"dislike": 4
+		},
+		{
+			"review": "The wifi can be patchy on certain floors. But overall, a solid choice.",
+			"image": "sherman2.jpg",
+			"starrating": 4,
+			"like": 127,
+			"dislike": 19
+		}
+	],
 
-  "Smith House": [
-    {
-      "review": "The proximity to the library is a huge plus for night owls.",
-      "image": "smith1.jpg",
-      "starrating": 5,
-      "like": 159,
-      "dislike": 7
-    },
-    {
-      "review": "Shared spaces can get crowded, especially during exams. Plan accordingly!",
-      "image": "smith2.jpg",
-      "starrating": 4,
-      "like": 134,
-      "dislike": 21
-    }
-  ],
-  "Taft House": [
-    {
-      "review": "It feels more like a cozy home than a dorm. Absolutely love it.",
-      "image": "taft1.jpg",
-      "starrating": 5,
-      "like": 172,
-      "dislike": 3
-    },
-    {
-      "review": "I wish the gym was a bit closer. But the ambiance more than compensates.",
-      "image": "taft2.jpg",
-      "starrating": 4,
-      "like": 148,
-      "dislike": 15
-    }
-  ],
-  "Taplin House": [
-    {
-      "review": "The rooftop area is great for evening hangouts. Loved my time here.",
-      "image": "taplin1.jpg",
-      "starrating": 4,
-      "like": 143,
-      "dislike": 10
-    },
-    {
-      "review": "The study rooms are well-maintained. Helps during crunch time.",
-      "image": "taplin2.jpg",
-      "starrating": 5,
-      "like": 160,
-      "dislike": 4
-    }
-  ],
-  "Tyler House": [
-    {
-      "review": "A quiet environment that's perfect for focusing on academics.",
-      "image": "tyler1.jpg",
-      "starrating": 5,
-      "like": 168,
-      "dislike": 3
-    },
-    {
-      "review": "It's a bit further from the main eateries, so plan your meals accordingly.",
-      "image": "tyler2.jpg",
-      "starrating": 4,
-      "like": 135,
-      "dislike": 20
-    }
-  ],
-  "Alumni House": [{
-    "review": "Feels rich in history and traditions. A sense of pride living here.",
-    "image": "alumni1.jpg",
-    "starrating": 5,
-    "like": 173,
-    "dislike": 2
-  },
-  {
-    "review": "The wooden interiors give it a classic touch. Though, it can get a bit creaky.",
-    "image": "alumni2.jpg",
-    "starrating": 4,
-    "like": 155,
-    "dislike": 18
-  }
-],
-"Howe House": [
-  {
-    "review": "Bright and spacious rooms with modern amenities. Feels very comfortable.",
-    "image": "howe1.jpg",
-    "starrating": 5,
-    "like": 178,
-    "dislike": 3
-  },
-  {
-    "review": "The communal kitchen is a great place to bond with fellow residents.",
-    "image": "howe2.jpg",
-    "starrating": 4,
-    "like": 162,
-    "dislike": 14
-  }
-],  
-  "Staley House": [{
-      "review": "The architecture is unique, giving a blend of classic and modern feels.",
-      "image": "staley1.jpg",
-      "starrating": 4,
-      "like": 146,
-      "dislike": 12
-    },
-    {
-      "review": "The garden area is peaceful, perfect for evening reads.",
-      "image": "staley2.jpg",
-      "starrating": 5,
-      "like": 167,
-      "dislike": 5
-    }
-  ],
-  "Tippit House": [
-    {
-      "review": "The facilities are top-notch. The game room is always lively!",
-      "image": "tippit1.jpg",
-      "starrating": 5,
-      "like": 180,
-      "dislike": 4
-    },
-    {
-      "review": "Located close to many campus activities. Makes life a lot easier.",
-      "image": "tippit2.jpg",
-      "starrating": 4,
-      "like": 159,
-      "dislike": 16
-    }
-  ],
-  "Glaser House": [
-    {
-      "review": "The minimalist design of the rooms is so refreshing. Love the aesthetics.",
-      "image": "glaser1.jpg",
-      "starrating": 5,
-      "like": 185,
-      "dislike": 5
-    },
-    {
-      "review": "It's close to the main academic blocks, saving a lot of travel time.",
-      "image": "glaser2.jpg",
-      "starrating": 4,
-      "like": 163,
-      "dislike": 14
-    }
-  ],
-  "Kusch House": [
-    {
-      "review": "The community vibe here is strong. Made some lifelong friends.",
-      "image": "kusch1.jpg",
-      "starrating": 5,
-      "like": 190,
-      "dislike": 3
-    },
-    {
-      "review": "The walls can be a bit thin, so sometimes you can hear neighbors. But overall, a great experience.",
-      "image": "kusch2.jpg",
-      "starrating": 4,
-      "like": 170,
-      "dislike": 12
-    }
-  ],
-  "Michelson House": [
-    {
-      "review": "The green spaces around the house make it feel serene and peaceful.",
-      "image": "michelson1.jpg",
-      "starrating": 4,
-      "like": 157,
-      "dislike": 8
-    },
-    {
-      "review": "Rooms are well-maintained and the management is always prompt in addressing concerns.",
-      "image": "michelson2.jpg",
-      "starrating": 5,
-      "like": 175,
-      "dislike": 4
-    }
-  ],
-  "Triangle Tower 2": [
-    {
-      "review": "Living in a tower has its perks! The view from the top floors is unbeatable.",
-      "image": "triangle_tower2_1.jpg",
-      "starrating": 5,
-      "like": 182,
-      "dislike": 3
-    },
-    {
-      "review": "Has a modern touch to it, but the elevators can be a tad slow during rush hours.",
-      "image": "triangle_tower2_2.jpg",
-      "starrating": 4,
-      "like": 165,
-      "dislike": 14
-    }
-  ],
-  "1609 Hazel Apartments": [
-    {
-      "review": "Modern interiors and friendly neighbors. It feels like home.",
-      "image": "hazel1.jpg",
-      "starrating": 5,
-      "like": 189,
-      "dislike": 6
-    },
-    {
-      "review": "Close to many city attractions. However, parking can sometimes be a challenge.",
-      "image": "hazel2.jpg",
-      "starrating": 4,
-      "like": 170,
-      "dislike": 15
-    }
-  ],
-  "1680 Apartment Building": [
-    {
-      "review": "The rooftop pool is a big plus, especially during summer.",
-      "image": "apt1680_1.jpg",
-      "starrating": 5,
-      "like": 195,
-      "dislike": 4
-    },
-    {
-      "review": "I appreciate the 24/7 security. It gives a sense of safety.",
-      "image": "apt1680_2.jpg",
-      "starrating": 4,
-      "like": 183,
-      "dislike": 13
-    }
-  ],
-  "1716 Apartments": [
-    {
-      "review": "Love the open floor plans. The natural light that pours in is amazing.",
-      "image": "apt1716_1.jpg",
-      "starrating": 4,
-      "like": 178,
-      "dislike": 10
-    },
-    {
-      "review": "Conveniently located close to grocery stores and cafes.",
-      "image": "apt1716_2.jpg",
-      "starrating": 5,
-      "like": 192,
-      "dislike": 5
-    }
-  ],
-  "1719 Apartment Building": [
-    {
-      "review": "The gym and recreational area are top-notch.",
-      "image": "apt1719_1.jpg",
-      "starrating": 5,
-      "like": 200,
-      "dislike": 3
-    },
-    {
-      "review": "The community events hosted here are always fun and engaging.",
-      "image": "apt1719_2.jpg",
-      "starrating": 4,
-      "like": 185,
-      "dislike": 12
-    }
-  ],
-  "1727 Apartment Building": [
-    {
-      "review": "The design is a mix of vintage and modern. Love the atmosphere.",
-      "image": "apt1727_1.jpg",
-      "starrating": 4,
-      "like": 163,
-      "dislike": 8
-    },
-    {
-      "review": "Proximity to parks is great for evening walks.",
-      "image": "apt1727_2.jpg",
-      "starrating": 5,
-      "like": 175,
-      "dislike": 4
-    }
-  ],
-  "Stephanie Tubbs Jones Residence Hall": [
-    {
-      "review": "Living here is a treat. Management is responsive and always ready to help.",
-      "image": "stjrh1.jpg",
-      "starrating": 5,
-      "like": 192,
-      "dislike": 3
-    },
-    {
-      "review": "It's lively and bustling with activity, great for extroverts.",
-      "image": "stjrh2.jpg",
-      "starrating": 4,
-      "like": 180,
-      "dislike": 10
-    }
-  ],
-  "The Monroe Apartments": [
-    {
-      "review": "The views from the higher floors are breathtaking.",
-      "image": "monroe1.jpg",
-      "starrating": 5,
-      "like": 188,
-      "dislike": 5
-    },
-    {
-      "review": "Well-maintained amenities, and the fitness center is a bonus.",
-      "image": "monroe2.jpg",
-      "starrating": 4,
-      "like": 179,
-      "dislike": 11
-    }
-  ],
-  "The Noble Apartment Building": [
-    {
-      "review": "A sense of community is palpable here. Residents are friendly and supportive.",
-      "image": "noble1.jpg",
-      "starrating": 5,
-      "like": 194,
-      "dislike": 2
-    },
-    {
-      "review": "Sometimes there's street noise, but the prime location makes up for it.",
-      "image": "noble2.jpg",
-      "starrating": 4,
-      "like": 175,
-      "dislike": 15
-    }
-  ],
-  "The Village House 1": [
-    {
-      "review": "Feels like a home away from home. Rooms are spacious.",
-      "image": "village1_1.jpg",
-      "starrating": 5,
-      "like": 190,
-      "dislike": 3
-    },
-    {
-      "review": "Perfect for students looking for a quiet study environment.",
-      "image": "village1_2.jpg",
-      "starrating": 4,
-      "like": 182,
-      "dislike": 12
-    }
-  ],
-  "The Village House 2": [
-    {
-      "review": "Has a contemporary design and the common areas are kept clean.",
-      "image": "village2_1.jpg",
-      "starrating": 5,
-      "like": 195,
-      "dislike": 4
-    },
-    {
-      "review": "The proximity to the library is a huge plus for late-night study sessions.",
-      "image": "village2_2.jpg",
-      "starrating": 4,
-      "like": 187,
-      "dislike": 9
-    }
-  ],
-  "The Village House 3": [
-    {
-      "review": "The green spaces surrounding the house are perfect for relaxation.",
-      "image": "village3_1.jpg",
-      "starrating": 4,
-      "like": 177,
-      "dislike": 11
-    },
-    {
-      "review": "Management is proactive and organizes regular community events.",
-      "image": "village3_2.jpg",
-      "starrating": 5,
-      "like": 186,
-      "dislike": 5
-    }
-  ],
-  "The Village House 3A": [
-    {
-      "review": "The architecture has a modern touch, making it quite appealing.",
-      "image": "village3A_1.jpg",
-      "starrating": 5,
-      "like": 191,
-      "dislike": 5
-    },
-    {
-      "review": "Great place for students, but sometimes can be a bit noisy on weekends.",
-      "image": "village3A_2.jpg",
-      "starrating": 4,
-      "like": 178,
-      "dislike": 14
-    }
-  ],
-  "The Village House 4": [
-    {
-      "review": "The balcony views are serene. A great place to enjoy evening tea.",
-      "image": "village4_1.jpg",
-      "starrating": 5,
-      "like": 196,
-      "dislike": 3
-    },
-    {
-      "review": "Has a tight-knit community feel. I've made some lifelong friends here.",
-      "image": "village4_2.jpg",
-      "starrating": 4,
-      "like": 182,
-      "dislike": 11
-    }
-  ],
-  "The Village House 5": [
-    {
-      "review": "Well-maintained common areas and responsive maintenance staff.",
-      "image": "village5_1.jpg",
-      "starrating": 4,
-      "like": 179,
-      "dislike": 10
-    },
-    {
-      "review": "Close to academic blocks, making it easy to reach classes on time.",
-      "image": "village5_2.jpg",
-      "starrating": 5,
-      "like": 190,
-      "dislike": 5
-    }
-  ],
-  "The Village House 6": [
-    {
-      "review": "The gardens are beautifully landscaped and are a delight to walk through.",
-      "image": "village6_1.jpg",
-      "starrating": 5,
-      "like": 193,
-      "dislike": 4
-    },
-    {
-      "review": "While the interiors are modern, they maintain a touch of warmth and coziness.",
-      "image": "village6_2.jpg",
-      "starrating": 4,
-      "like": 185,
-      "dislike": 12
-    }
-  ],
-  "The Village House 7": [
-    {
-      "review": "Has a community-focused design. There's a sense of belonging here.",
-      "image": "village7_1.jpg",
-      "starrating": 5,
-      "like": 198,
-      "dislike": 3
-    },
-    {
-      "review": "Proximity to the campus cafe is great for quick snacks.",
-      "image": "village7_2.jpg",
-      "starrating": 4,
-      "like": 180,
-      "dislike": 13
-    }
-  ],
-  "The Village at 115 Complex": [
-    {
-      "review": "It's like a mini-city in itself. Has everything you'd need within walking distance.",
-      "image": "village_complex_1.jpg",
-      "starrating": 5,
-      "like": 200,
-      "dislike": 2
-    },
-    {
-      "review": "The amenities are top-notch, from gyms to study rooms. A complete package.",
-      "image": "village_complex_2.jpg",
-      "starrating": 4,
-      "like": 192,
-      "dislike": 10
-    }
-  ],
-  "Triangle Towers": [
-    {
-      "review": "Living in the heart of the city, Triangle Towers offers a unique blend of urban living and peace.",
-      "image": "triangle_towers_1.jpg",
-      "starrating": 5,
-      "like": 202,
-      "dislike": 3
-    },
-    {
-      "review": "The rooftop garden is a hidden gem, offering an oasis of calm amidst the bustling city.",
-      "image": "triangle_towers_2.jpg",
-      "starrating": 4,
-      "like": 198,
-      "dislike": 7
-    }
-  ],
-    "Twin Gables Apartment Building": [
-      {
-        "review": "Impressed with the maintenance team. Any issue gets resolved quickly.",
-        "image": "twin_gables1.jpg",
-        "starrating": 5,
-        "like": 180,
-        "dislike": 3
-      },
-      {
-        "review": "The parking situation could be better. But interiors are top-notch.",
-        "image": "twin_gables2.jpg",
-        "starrating": 3.8,
-        "like": 142,
-        "dislike": 21
-      }
-    ]
-  }
-  
+	"Smith House": [
+		{
+			"review": "The proximity to the library is a huge plus for night owls.",
+			"image": "smith1.jpg",
+			"starrating": 5,
+			"like": 159,
+			"dislike": 7
+		},
+		{
+			"review": "Shared spaces can get crowded, especially during exams. Plan accordingly!",
+			"image": "smith2.jpg",
+			"starrating": 4,
+			"like": 134,
+			"dislike": 21
+		}
+	],
+	"Taft House": [
+		{
+			"review": "It feels more like a cozy home than a dorm. Absolutely love it.",
+			"image": "taft1.jpg",
+			"starrating": 5,
+			"like": 172,
+			"dislike": 3
+		},
+		{
+			"review": "I wish the gym was a bit closer. But the ambiance more than compensates.",
+			"image": "taft2.jpg",
+			"starrating": 4,
+			"like": 148,
+			"dislike": 15
+		}
+	],
+	"Taplin House": [
+		{
+			"review": "The rooftop area is great for evening hangouts. Loved my time here.",
+			"image": "taplin1.jpg",
+			"starrating": 4,
+			"like": 143,
+			"dislike": 10
+		},
+		{
+			"review": "The study rooms are well-maintained. Helps during crunch time.",
+			"image": "taplin2.jpg",
+			"starrating": 5,
+			"like": 160,
+			"dislike": 4
+		}
+	],
+	"Tyler House": [
+		{
+			"review": "A quiet environment that's perfect for focusing on academics.",
+			"image": "tyler1.jpg",
+			"starrating": 5,
+			"like": 168,
+			"dislike": 3
+		},
+		{
+			"review": "It's a bit further from the main eateries, so plan your meals accordingly.",
+			"image": "tyler2.jpg",
+			"starrating": 4,
+			"like": 135,
+			"dislike": 20
+		}
+	],
+	"Alumni House": [
+		{
+			"review": "Feels rich in history and traditions. A sense of pride living here.",
+			"image": "alumni1.jpg",
+			"starrating": 5,
+			"like": 173,
+			"dislike": 2
+		},
+		{
+			"review": "The wooden interiors give it a classic touch. Though, it can get a bit creaky.",
+			"image": "alumni2.jpg",
+			"starrating": 4,
+			"like": 155,
+			"dislike": 18
+		}
+	],
+	"Howe House": [
+		{
+			"review": "Bright and spacious rooms with modern amenities. Feels very comfortable.",
+			"image": "howe1.jpg",
+			"starrating": 5,
+			"like": 178,
+			"dislike": 3
+		},
+		{
+			"review": "The communal kitchen is a great place to bond with fellow residents.",
+			"image": "howe2.jpg",
+			"starrating": 4,
+			"like": 162,
+			"dislike": 14
+		}
+	],
+	"Staley House": [
+		{
+			"review": "The architecture is unique, giving a blend of classic and modern feels.",
+			"image": "staley1.jpg",
+			"starrating": 4,
+			"like": 146,
+			"dislike": 12
+		},
+		{
+			"review": "The garden area is peaceful, perfect for evening reads.",
+			"image": "staley2.jpg",
+			"starrating": 5,
+			"like": 167,
+			"dislike": 5
+		}
+	],
+	"Tippit House": [
+		{
+			"review": "The facilities are top-notch. The game room is always lively!",
+			"image": "tippit1.jpg",
+			"starrating": 5,
+			"like": 180,
+			"dislike": 4
+		},
+		{
+			"review": "Located close to many campus activities. Makes life a lot easier.",
+			"image": "tippit2.jpg",
+			"starrating": 4,
+			"like": 159,
+			"dislike": 16
+		}
+	],
+	"Glaser House": [
+		{
+			"review": "The minimalist design of the rooms is so refreshing. Love the aesthetics.",
+			"image": "glaser1.jpg",
+			"starrating": 5,
+			"like": 185,
+			"dislike": 5
+		},
+		{
+			"review": "It's close to the main academic blocks, saving a lot of travel time.",
+			"image": "glaser2.jpg",
+			"starrating": 4,
+			"like": 163,
+			"dislike": 14
+		}
+	],
+	"Kusch House": [
+		{
+			"review": "The community vibe here is strong. Made some lifelong friends.",
+			"image": "kusch1.jpg",
+			"starrating": 5,
+			"like": 190,
+			"dislike": 3
+		},
+		{
+			"review": "The walls can be a bit thin, so sometimes you can hear neighbors. But overall, a great experience.",
+			"image": "kusch2.jpg",
+			"starrating": 4,
+			"like": 170,
+			"dislike": 12
+		}
+	],
+	"Michelson House": [
+		{
+			"review": "The green spaces around the house make it feel serene and peaceful.",
+			"image": "michelson1.jpg",
+			"starrating": 4,
+			"like": 157,
+			"dislike": 8
+		},
+		{
+			"review": "Rooms are well-maintained and the management is always prompt in addressing concerns.",
+			"image": "michelson2.jpg",
+			"starrating": 5,
+			"like": 175,
+			"dislike": 4
+		}
+	],
+	"Triangle Tower 2": [
+		{
+			"review": "Living in a tower has its perks! The view from the top floors is unbeatable.",
+			"image": "triangle_tower2_1.jpg",
+			"starrating": 5,
+			"like": 182,
+			"dislike": 3
+		},
+		{
+			"review": "Has a modern touch to it, but the elevators can be a tad slow during rush hours.",
+			"image": "triangle_tower2_2.jpg",
+			"starrating": 4,
+			"like": 165,
+			"dislike": 14
+		}
+	],
+	"1609 Hazel Apartments": [
+		{
+			"review": "Modern interiors and friendly neighbors. It feels like home.",
+			"image": "hazel1.jpg",
+			"starrating": 5,
+			"like": 189,
+			"dislike": 6
+		},
+		{
+			"review": "Close to many city attractions. However, parking can sometimes be a challenge.",
+			"image": "hazel2.jpg",
+			"starrating": 4,
+			"like": 170,
+			"dislike": 15
+		}
+	],
+	"1680 Apartment Building": [
+		{
+			"review": "The rooftop pool is a big plus, especially during summer.",
+			"image": "apt1680_1.jpg",
+			"starrating": 5,
+			"like": 195,
+			"dislike": 4
+		},
+		{
+			"review": "I appreciate the 24/7 security. It gives a sense of safety.",
+			"image": "apt1680_2.jpg",
+			"starrating": 4,
+			"like": 183,
+			"dislike": 13
+		}
+	],
+	"1716 Apartments": [
+		{
+			"review": "Love the open floor plans. The natural light that pours in is amazing.",
+			"image": "apt1716_1.jpg",
+			"starrating": 4,
+			"like": 178,
+			"dislike": 10
+		},
+		{
+			"review": "Conveniently located close to grocery stores and cafes.",
+			"image": "apt1716_2.jpg",
+			"starrating": 5,
+			"like": 192,
+			"dislike": 5
+		}
+	],
+	"1719 Apartment Building": [
+		{
+			"review": "The gym and recreational area are top-notch.",
+			"image": "apt1719_1.jpg",
+			"starrating": 5,
+			"like": 200,
+			"dislike": 3
+		},
+		{
+			"review": "The community events hosted here are always fun and engaging.",
+			"image": "apt1719_2.jpg",
+			"starrating": 4,
+			"like": 185,
+			"dislike": 12
+		}
+	],
+	"1727 Apartment Building": [
+		{
+			"review": "The design is a mix of vintage and modern. Love the atmosphere.",
+			"image": "apt1727_1.jpg",
+			"starrating": 4,
+			"like": 163,
+			"dislike": 8
+		},
+		{
+			"review": "Proximity to parks is great for evening walks.",
+			"image": "apt1727_2.jpg",
+			"starrating": 5,
+			"like": 175,
+			"dislike": 4
+		}
+	],
+	"Stephanie Tubbs Jones Residence Hall": [
+		{
+			"review": "Living here is a treat. Management is responsive and always ready to help.",
+			"image": "stjrh1.jpg",
+			"starrating": 5,
+			"like": 192,
+			"dislike": 3
+		},
+		{
+			"review": "It's lively and bustling with activity, great for extroverts.",
+			"image": "stjrh2.jpg",
+			"starrating": 4,
+			"like": 180,
+			"dislike": 10
+		}
+	],
+	"The Monroe Apartments": [
+		{
+			"review": "The views from the higher floors are breathtaking.",
+			"image": "monroe1.jpg",
+			"starrating": 5,
+			"like": 188,
+			"dislike": 5
+		},
+		{
+			"review": "Well-maintained amenities, and the fitness center is a bonus.",
+			"image": "monroe2.jpg",
+			"starrating": 4,
+			"like": 179,
+			"dislike": 11
+		}
+	],
+	"The Noble Apartment Building": [
+		{
+			"review": "A sense of community is palpable here. Residents are friendly and supportive.",
+			"image": "noble1.jpg",
+			"starrating": 5,
+			"like": 194,
+			"dislike": 2
+		},
+		{
+			"review": "Sometimes there's street noise, but the prime location makes up for it.",
+			"image": "noble2.jpg",
+			"starrating": 4,
+			"like": 175,
+			"dislike": 15
+		}
+	],
+	"The Village House 1": [
+		{
+			"review": "Feels like a home away from home. Rooms are spacious.",
+			"image": "village1_1.jpg",
+			"starrating": 5,
+			"like": 190,
+			"dislike": 3
+		},
+		{
+			"review": "Perfect for students looking for a quiet study environment.",
+			"image": "village1_2.jpg",
+			"starrating": 4,
+			"like": 182,
+			"dislike": 12
+		}
+	],
+	"The Village House 2": [
+		{
+			"review": "Has a contemporary design and the common areas are kept clean.",
+			"image": "village2_1.jpg",
+			"starrating": 5,
+			"like": 195,
+			"dislike": 4
+		},
+		{
+			"review": "The proximity to the library is a huge plus for late-night study sessions.",
+			"image": "village2_2.jpg",
+			"starrating": 4,
+			"like": 187,
+			"dislike": 9
+		}
+	],
+	"The Village House 3": [
+		{
+			"review": "The green spaces surrounding the house are perfect for relaxation.",
+			"image": "village3_1.jpg",
+			"starrating": 4,
+			"like": 177,
+			"dislike": 11
+		},
+		{
+			"review": "Management is proactive and organizes regular community events.",
+			"image": "village3_2.jpg",
+			"starrating": 5,
+			"like": 186,
+			"dislike": 5
+		}
+	],
+	"The Village House 3A": [
+		{
+			"review": "The architecture has a modern touch, making it quite appealing.",
+			"image": "village3A_1.jpg",
+			"starrating": 5,
+			"like": 191,
+			"dislike": 5
+		},
+		{
+			"review": "Great place for students, but sometimes can be a bit noisy on weekends.",
+			"image": "village3A_2.jpg",
+			"starrating": 4,
+			"like": 178,
+			"dislike": 14
+		}
+	],
+	"The Village House 4": [
+		{
+			"review": "The balcony views are serene. A great place to enjoy evening tea.",
+			"image": "village4_1.jpg",
+			"starrating": 5,
+			"like": 196,
+			"dislike": 3
+		},
+		{
+			"review": "Has a tight-knit community feel. I've made some lifelong friends here.",
+			"image": "village4_2.jpg",
+			"starrating": 4,
+			"like": 182,
+			"dislike": 11
+		}
+	],
+	"The Village House 5": [
+		{
+			"review": "Well-maintained common areas and responsive maintenance staff.",
+			"image": "village5_1.jpg",
+			"starrating": 4,
+			"like": 179,
+			"dislike": 10
+		},
+		{
+			"review": "Close to academic blocks, making it easy to reach classes on time.",
+			"image": "village5_2.jpg",
+			"starrating": 5,
+			"like": 190,
+			"dislike": 5
+		}
+	],
+	"The Village House 6": [
+		{
+			"review": "The gardens are beautifully landscaped and are a delight to walk through.",
+			"image": "village6_1.jpg",
+			"starrating": 5,
+			"like": 193,
+			"dislike": 4
+		},
+		{
+			"review": "While the interiors are modern, they maintain a touch of warmth and coziness.",
+			"image": "village6_2.jpg",
+			"starrating": 4,
+			"like": 185,
+			"dislike": 12
+		}
+	],
+	"The Village House 7": [
+		{
+			"review": "Has a community-focused design. There's a sense of belonging here.",
+			"image": "village7_1.jpg",
+			"starrating": 5,
+			"like": 198,
+			"dislike": 3
+		},
+		{
+			"review": "Proximity to the campus cafe is great for quick snacks.",
+			"image": "village7_2.jpg",
+			"starrating": 4,
+			"like": 180,
+			"dislike": 13
+		}
+	],
+	"The Village at 115 Complex": [
+		{
+			"review": "It's like a mini-city in itself. Has everything you'd need within walking distance.",
+			"image": "village_complex_1.jpg",
+			"starrating": 5,
+			"like": 200,
+			"dislike": 2
+		},
+		{
+			"review": "The amenities are top-notch, from gyms to study rooms. A complete package.",
+			"image": "village_complex_2.jpg",
+			"starrating": 4,
+			"like": 192,
+			"dislike": 10
+		}
+	],
+	"Triangle Towers": [
+		{
+			"review": "Living in the heart of the city, Triangle Towers offers a unique blend of urban living and peace.",
+			"image": "triangle_towers_1.jpg",
+			"starrating": 5,
+			"like": 202,
+			"dislike": 3
+		},
+		{
+			"review": "The rooftop garden is a hidden gem, offering an oasis of calm amidst the bustling city.",
+			"image": "triangle_towers_2.jpg",
+			"starrating": 4,
+			"like": 198,
+			"dislike": 7
+		}
+	],
+	"Twin Gables Apartment Building": [
+		{
+			"review": "Impressed with the maintenance team. Any issue gets resolved quickly.",
+			"image": "twin_gables1.jpg",
+			"starrating": 5,
+			"like": 180,
+			"dislike": 3
+		},
+		{
+			"review": "The parking situation could be better. But interiors are top-notch.",
+			"image": "twin_gables2.jpg",
+			"starrating": 4,
+			"like": 142,
+			"dislike": 21
+		}
+	]
+}
