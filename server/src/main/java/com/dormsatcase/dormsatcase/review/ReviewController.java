@@ -1,6 +1,7 @@
 package com.dormsatcase.dormsatcase.review;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,7 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getAll")
     public ResponseEntity<List<JsonNode>> getAll(@RequestParam("dormName") String dormName) {
         return reviewService.getAll(dormName);
