@@ -9,10 +9,14 @@ import { faBars, faMagnifyingGlass, faArrowRight } from "@fortawesome/free-solid
 import React, { useState } from 'react';
 import LoginModal from './LoginModal';
 import DiaWrap from '@mui/material/Dialog';
+import SignupModal from "./SignupModal";
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const NavigationBar = () => {
   const options = dorms;
   const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isSignupOpen, setSignupOpen] = useState(false);
   const [isSearchSeen, setSearchSeen] = useState(false); 
 
   const handleDormPage = (dorm) => {
@@ -28,10 +32,41 @@ const NavigationBar = () => {
   };
 
   const loginCallback = (data) => {
-    if (data && (data.action === 'submitted' || data.action === 'cancelled')) {
+    // if (data && (data.action === 'submitted' || data.action === 'cancelled')) {
+    //   setLoginOpen(false);
+    // }
+    if (data && (data.action === "signup")){
+      console.log("Should open up sign up")
       setLoginOpen(false);
+      setSignupOpen(true);
+    }
+    if (data && data.action === 'account login successful'){
+      toast.success('Account login successful!');
+      console.log('account login successful')
+      setLoginOpen(false);
+    } else if (data && data.action === 'account login unsuccessful'){
+      toast.error('Account login UNSUCCESSFUL');
+      console.log('account login unsuccessful')
     }
   };
+
+  const signupCallback = (data) => {
+    // if (data && (data.action === 'submitted' || data.action === 'cancelled')) {
+    //   setSignupOpen(false);
+    // }
+    if (data && (data.action === 'cancelled')) {
+      setSignupOpen(false);
+    }
+    if (data && data.action === 'account creation successful'){
+      toast.success('Account creation successful!');
+      console.log('account creation successful')
+      setSignupOpen(false);
+    } else if (data && data.action === 'account creation unsuccessful'){
+      toast.error('Account creation UNSUCCESSFUL');
+      console.log('account creation unsuccessful')
+    }
+  };
+
 
   return (
     <div>
@@ -109,7 +144,12 @@ const NavigationBar = () => {
       <DiaWrap open={isLoginOpen} onClose={() => loginCallback()}>
         <LoginModal parentCallback={loginCallback} login={isLoginOpen}></LoginModal>
       </DiaWrap>
+      <DiaWrap open={isSignupOpen} onClose={() => signupCallback()}>
+        <SignupModal parentCallback={signupCallback} signup={isSignupOpen}></SignupModal>
+      </DiaWrap>
+      <ToastContainer />
     </div>
+    
   );
 };
 
