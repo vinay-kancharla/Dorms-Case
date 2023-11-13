@@ -50,19 +50,19 @@ const SignupModal = (props) => {
     //     });
     // }
     if (!hasError){
-        // handleSubmit()
-        props.parentCallback({
-            action: "account creation successful"
-        })
+        handleSubmit()
     }  
 }
 
 const handleSubmit = async () => {
   
-    const accountToBeCreated = { emailValue, passwordValue};
+    const accountToBeCreated = {
+        'email': emailValue,
+        'password': passwordValue
+    };
   
     try {
-      const response = await fetch('http://localhost:8080/create-account', {
+      const response = await fetch('http://localhost:8080/api/user/sign-up', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,18 +71,19 @@ const handleSubmit = async () => {
       });
   
       if (response.ok) {
-        console.log('Account created successfully');
-        toast.success('Account creation successful!');
-        props.parentCallback({
-            action: "account creation successful"
-        })
+        const userIdentifier = await response.text();
+        if (userIdentifier === 'null') {
+            console.log('Failed to create account due to invalid credentials');
+            toast.error('Account creation UNSUCCESSFUL');
+        }
+        else {
+            console.log('Account created successfully');
+            toast.success('Account creation successful!');
+        }
         
       } else {
         console.log('Failed to create account');
         toast.error('Account creation UNSUCCESSFUL');
-        props.parentCallback({
-            action: "account creation unsuccessful"
-        })
       }
     } catch (error) {
       console.error('Error:', error);

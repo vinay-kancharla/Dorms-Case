@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.dormsatcase.dormsatcase.user.UserDTO;
 
@@ -45,11 +46,13 @@ public class UserController {
     }
      */
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/sign-up")
     public Optional<UUID> signUp(@RequestBody UserDTO userDTO) {
         return userService.signUp(userDTO.getEmail(), userDTO.getPassword());
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/sign-in")
     public Optional<UUID> signIn(@RequestParam("email")  String email,
                                  @RequestParam("password") String password) {
