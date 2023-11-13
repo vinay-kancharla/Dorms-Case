@@ -34,7 +34,7 @@ export default function DormPage() {
 				{dormId}
 			</h1>
 			{/* Here is "map" code to give you an idea of how it works. I would recommend making a component called "reviewlayout" and use that in each iteration*/}
-			{reviews.map((review, index) => (
+			{/* {reviews.map((review, index) => (
 				<ReviewTemplate
 					rating={review.starrating}
 					reviewText={review.review}
@@ -42,8 +42,8 @@ export default function DormPage() {
 					likes={review.like}
 					dislikes={review.dislike}
 				/>
-			))}
-			<DormPages />
+			))} */}
+			<DormPages dormId={dormId} />
 		</div>
 	);
 }
