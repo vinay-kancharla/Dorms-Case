@@ -1,49 +1,48 @@
 {
-    "First-Year Experience": [
-      "Cutler House",
-      "Hitchcock House",
-      "Pierce House",
-      "Storrs House",
-      "Clarke Tower",
-      "Norton House",
-      "Raymond House",
-      "Sherman House",
-      "Smith House",
-      "Taft House",
-      "Taplin House",
-      "Tyler House"
-    ],
-    "Second-Year Experience": [
-      "Clarke Tower",
-      "Alumni House",
-      "Howe House",
-      "Staley House",
-      "Tippit House",
-      "Glaser House",
-      "Kusch House",
-      "Michelson House",
-      "Triangle Tower 2"
-    ],
-    "Upperclass Experience": [
-      "1609 Hazel Apartments",
-      "1680 Apartment Building",
-      "1716 Apartments",
-      "1719 Apartment Building",
-      "1727 Apartment Building",
-      "Stephanie Tubbs Jones Residence Hall",
-      "The Monroe Apartments",
-      "The Noble Apartment Building",
-      "The Village House 1",
-      "The Village House 2",
-      "The Village House 3",
-      "The Village House 3A",
-      "The Village House 4",
-      "The Village House 5",
-      "The Village House 6",
-      "The Village House 7",
-      "The Village at 115 Complex",
-      "Triangle Towers",
-      "Twin Gables Apartment Building"
-    ]
-  }
-  
+	"First Year Experience": [
+		"Cutler House",
+		"Hitchcock House",
+		"Pierce House",
+		"Storrs House",
+		"Clarke Tower",
+		"Norton House",
+		"Raymond House",
+		"Sherman House",
+		"Smith House",
+		"Taft House",
+		"Taplin House",
+		"Tyler House"
+	],
+	"Second Year Experience": [
+		"Clarke Tower",
+		"Alumni House",
+		"Howe House",
+		"Staley House",
+		"Tippit House",
+		"Glaser House",
+		"Kusch House",
+		"Michelson House",
+		"Triangle Tower 2"
+	],
+	"Upperclass Experience": [
+		"1609 Hazel Apartments",
+		"1680 Apartment Building",
+		"1716 Apartments",
+		"1719 Apartment Building",
+		"1727 Apartment Building",
+		"Stephanie Tubbs Jones Residence Hall",
+		"The Monroe Apartments",
+		"The Noble Apartment Building",
+		"The Village House 1",
+		"The Village House 2",
+		"The Village House 3",
+		"The Village House 3A",
+		"The Village House 4",
+		"The Village House 5",
+		"The Village House 6",
+		"The Village House 7",
+		"The Village at 115 Complex",
+		"Triangle Towers",
+		"Twin Gables Apartment Building"
+	]
+}
