@@ -12,6 +12,7 @@ public class User {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "user_identifier")
     private UUID userIdentifier;
 
     private String email;

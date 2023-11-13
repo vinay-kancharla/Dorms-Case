@@ -1,3 +1,7 @@
 {
-    "experiences": ["First-Year Experience", "Second-Year Experience", "Upperclass Experience"]
-  }
+	"experiences": [
+		"First Year Experience",
+		"Second Year Experience",
+		"Upperclass Experience"
+	]
+}
