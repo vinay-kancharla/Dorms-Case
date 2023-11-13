@@ -4,14 +4,33 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.util.UUID;
 
-@Data
+@Entity
 @Table(name="users")
 public class User {
+    //     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID userIdentifer;
+    private UUID user_identifier;
     private String email;
     private String password;
+
+    public User() {
+        // Default constructor
+    }
+
+    public User(String email, String password, UUID user_identifier) {
+        this.email = email;
+        this.password = password;
+        this.user_identifier = user_identifier;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public UUID getUserIdentifier() {
+        return this.user_identifier;
+    }
+
 }
 
 /*

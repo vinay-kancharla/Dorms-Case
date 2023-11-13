@@ -1,5 +1,7 @@
 package com.dormsatcase.dormsatcase.user;
 
+import java.util.Optional;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dormsatcase.dormsatcase.user.UserDTO;
@@ -44,11 +47,12 @@ public class UserController {
 
     @PostMapping("/sign-up")
     public Optional<UUID> signUp(@RequestBody UserDTO userDTO) {
-        return userService.signUp(userDTO);
+        return userService.signUp(userDTO.getEmail(), userDTO.getPassword());
     }
 
     @GetMapping("/sign-in")
-    public Optional<UUID> signIn(@RequestParam UserDTO userDTO) {
-        return userService.signIn(userDTO);
+    public Optional<UUID> signIn(@RequestParam("email")  String email,
+                                 @RequestParam("password") String password) {
+        return userService.signIn(email, password);
     }
 }
