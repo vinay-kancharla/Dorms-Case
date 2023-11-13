@@ -83,5 +83,4 @@ public class ReviewServiceTest {
             assertThat(reviewNode.get("dislike"), instanceOf(IntNode.class));
         }
     }
-
 }
