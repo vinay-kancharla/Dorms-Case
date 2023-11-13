@@ -41,9 +41,9 @@ const LoginModal = (props) => {
         //     action: 'submitted'
         // });
         handleSubmit()
-        props.parentCallback({
-          action: "account login successful"
-      })
+        //props.parentCallback({
+        //  action: "account login successful"
+      //})
     }
 }
 
@@ -52,40 +52,35 @@ const handleSubmit = async () => {
   const accountLogin = { emailValue, passwordValue};
 
   try {
-    const response = await fetch('http://localhost:8080/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(accountLogin),
-    });
+    const response = await fetch(`http://localhost:8080/api/user/sign-in?email=${emailValue}&password=${passwordValue}`
+    );
 
     if (response.ok) {
-      console.log('Account login successfully');
-      toast.success('Account login successful!');
-      props.parentCallback({
-          action: "account login successful"
-      })
-      
+      const userIdentifier = await response.text();
+      if (userIdentifier === 'null') {
+        console.log('Failed to login account due to invalid credentials');
+        toast.error('Account login UNSUCCESSFUL');
+      }
+      else {
+            console.log('Account login successfully');
+            toast.success('Account login successful!');
+      }
     } else {
       console.log('Failed to login account');
       toast.error('Account login UNSUCCESSFUL');
-      props.parentCallback({
-          action: "account login unsuccessful"
-      })
     }
   } catch (error) {
     console.error('Error:', error);
+    toast.error('Account login UNSUCCESSFUL');
   }
 };
-
 
   let signupClicked = () => {
     props.parentCallback({
       action: "signup"
     })
   }
-  
+
     let cancel = () => {
         props.parentCallback({
             action: 'cancelled'
