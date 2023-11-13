@@ -7,5 +7,5 @@ import java.util.UUID;
 @Data
 public class UserDTO {
     private String email;
-    private String password; // password is hashed when received
+    private String password;
 }

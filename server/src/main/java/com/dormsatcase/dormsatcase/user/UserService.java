@@ -1,7 +1,12 @@
 package com.dormsatcase.dormsatcase.user;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.dormsatcase.dormsatcase.user.UserRepository;
 import com.dormsatcase.dormsatcase.user.UserDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.UUID;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -9,30 +14,35 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    public Optional<UUID> signUp(UserDTO userDTO) {
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    private boolean passwordMatches(String enteredPassword, String expectedHashedPassword) {
+        return passwordEncoder.matches(enteredPassword, expectedHashedPassword);
+    }
+
+    public Optional<UUID> signUp(String email, String password) {
         // there already exists a user with this email address
-        if (userRepo.existsByEmail(userDTO.getEmail())) {
+        if (userRepo.existsByEmail(email)) {
             return Optional.empty();
         }
 
-        UUID userIdentifer = UUID.randomUUID();
-
-        User user = new User();
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        user.setUserIdentifier(userIdentifer);
+        UUID userIdentifier = UUID.randomUUID();
+        User user = new User(email, password, userIdentifier);
         userRepo.save(user);
-
         return Optional.of(userIdentifier);
     }
 
-    public Optional<UUID> signIn(UserDTO userDTO) {
-        Optional<User> user = userRepo.findByEmailAndPassword(userDTO.getEmail(),
-                userDTO.getPassword());
-        if (!user.isPresent()) {
+    public Optional<UUID> signIn(String email, String password) {
+
+
+
+        Optional<User> optionalUser = userRepo.findByEmailAndPassword(email, password);
+        if (!optionalUser.isPresent()) {
             return Optional.empty();
         }
-        return Optional.of(user.getUserIdentifier);
+        User user = optionalUser.get();
+        return Optional.of(user.getUserIdentifier());
     }
 
 }
