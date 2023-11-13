@@ -1,9 +1,5 @@
 package com.dormsatcase.dormsatcase.user;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dormsatcase.dormsatcase.user.User;
-import com.dormsatcase.dormsatcase.user.UserRepository;
+import com.dormsatcase.dormsatcase.user.UserDTO;
 
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/api/users")
-public class UsersController {
+@RequestMapping("/api/user")
+public class UserController {
 
     @Autowired
-    private UserRepository userRepo;
+    private UserService userService;
 
+    /*
     @GetMapping("/view")
     public String getAllUsers(Model model) {
         System.out.println("Getting all users");
@@ -43,5 +39,16 @@ public class UsersController {
         userRepo.save(new User(newName, newPwd, newSize));
         response.setStatus(201);
         return "user/addedUser";
+    }
+     */
+
+    @PostMapping("/sign-up")
+    public Optional<UUID> signUp(@RequestBody UserDTO userDTO) {
+        return userService.signUp(userDTO);
+    }
+
+    @GetMapping("/sign-in")
+    public Optional<UUID> signIn(@RequestParam UserDTO userDTO) {
+        return userService.signIn(userDTO);
     }
 }
