@@ -11,7 +11,8 @@ public class User {
     private String name;
     private String password;
     private int size;
-    
+
+    // test
     public User(String name, String password, int size) {
         this.name = name;
         this.password = password;
