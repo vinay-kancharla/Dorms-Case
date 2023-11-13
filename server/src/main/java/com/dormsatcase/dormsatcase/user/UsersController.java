@@ -37,10 +37,9 @@ public class UsersController {
     @PostMapping("/add")
     public String addUser(@RequestParam Map<String, String> newuser, HttpServletResponse response) {
         System.out.println("Add user");
-        String newName = newuser.get("name");
+        String newEmail = newuser.get("email");
         String newPwd = newuser.get("password");
-        int newSize = Integer.parseInt(newuser.get("size"));
-        userRepo.save(new User(newName, newPwd, newSize));
+        userRepo.save(new User(newEmail, newPwd));
         response.setStatus(201);
         return "user/addedUser";
     }

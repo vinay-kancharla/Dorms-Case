@@ -1,48 +1,44 @@
 package com.dormsatcase.dormsatcase.user;
 
+import java.util.UUID;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int uid;
-    private String name;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private UUID userIdentifier;
+
+    private String email;
     private String password;
-    private int size;
+
+    protected User() {
+
+    }
     
-    public User(String name, String password, int size) {
-        this.name = name;
+    public User(String email, String password) {
+        this.email = email;
         this.password = password;
-        this.size = size;
+    }
+    
+    public UUID getUserIdentifier() {
+        return userIdentifier;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
         return password;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
     }
 }
