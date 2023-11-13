@@ -1,7 +1,20 @@
 package com.dormsatcase.dormsatcase.user;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import java.util.UUID;
 
+@Data
+@Table(name="users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID userIdentifer;
+    private String email;
+    private String password;
+}
+
+/*
 @Entity
 @Table(name="users")
 public class User {
@@ -12,7 +25,6 @@ public class User {
     private String password;
     private int size;
 
-    // test
     public User(String name, String password, int size) {
         this.name = name;
         this.password = password;
@@ -47,3 +59,4 @@ public class User {
         this.uid = uid;
     }
 }
+ */

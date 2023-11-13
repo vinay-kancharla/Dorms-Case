@@ -1,10 +1,10 @@
 package com.dormsatcase.dormsatcase.user;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-    List<User> findBySize(int size);
-    List<User> findByNameAndPassword(String name, String password);
+    //List<User> findBySize(int size);
+    //List<User> findByNameAndPassword(String email, String password);
+    boolean existsByName(String name);
+    Optional<User> findByEmailAndPassword(String email, String password);
 }
