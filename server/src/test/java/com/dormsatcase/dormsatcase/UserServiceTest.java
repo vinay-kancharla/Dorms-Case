@@ -72,5 +72,8 @@ public class UserServiceTest {
         UserDTO userDTO2 = new UserDTO("EXISTS", "EXISTS");
         Optional<UUID> userIdentifier2 = userController.signUp(userDTO2);
         assertFalse(userIdentifier2.isPresent());
+
+        // test empty constructor works
+        User user = new User();
     }
 }

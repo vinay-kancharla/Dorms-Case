@@ -10,34 +10,25 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="users")
 public class User {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "user_id")
     private UUID userId;
-
     private String email;
-
     private String password;
 
-    protected User() {
-
+    public User() {
+        // default constructor needed by database
     }
 
-    public User(String email, String password, UUID user_identifier) {
+    public User(String email, String password, UUID userId) {
         this.email = email;
         this.password = password;
-        this.userId = user_identifier;
+        this.userId = userId;
     }
 
     public UUID getUserId() {
         return this.userId;
     }
 
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getPassword() {
+        return this.password;
     }
 }
