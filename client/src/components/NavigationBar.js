@@ -10,13 +10,16 @@ import {
 	faMagnifyingGlass,
 	faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import LoginModal from "./LoginModal";
 import DiaWrap from "@mui/material/Dialog";
 import SignupModal from "./SignupModal";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import { useUser } from "../UserContext";
+import SearchBar  from "./SearchBar";
+import "./components.css"
+
 
 const NavigationBar = () => {
 	const options = dorms;
@@ -78,7 +81,7 @@ const NavigationBar = () => {
 
 	return (
 		<div>
-			<Navbar expand='lg' bg='primary'>
+			<Navbar expand='lg' bg='primary' className="custom-navbar">
 				<Container className='d-flex justify-content-between'>
 					<Nav style={{ display: "flex", width: "100%" }}>
 						<NavDropdown
@@ -95,6 +98,9 @@ const NavigationBar = () => {
 										<span
 											style={{ display: "inline-block" }}
 										>
+											<Link
+												to={`/experience/${experience}`}
+											>
 											<NavDropdown
 												title={experience}
 												id={`${experience}-dropdown`}
@@ -120,6 +126,7 @@ const NavigationBar = () => {
 													</NavDropdown.Item>
 												))}
 											</NavDropdown>
+											</Link>
 										</span>
 										<span
 											style={{ display: "inline-block" }}
@@ -136,9 +143,8 @@ const NavigationBar = () => {
 								)
 							)}
 						</NavDropdown>
-						<div style={{ flex: 1 }}></div>
 
-						<Navbar.Brand>
+						<Navbar.Brand  className="navbar-brand ">
 							<Link
 								style={{
 									textDecoration: "none",
@@ -151,29 +157,22 @@ const NavigationBar = () => {
 							</Link>
 						</Navbar.Brand>
 
-						<div style={{ flex: 1.5 }}></div>
 
-						<Nav.Link>
-							<div onClick={changeSearchBar}>
+						
+						{isSearchSeen && <SearchBar/> }
+
+
+							<div  className="custom-nav-item" onClick={changeSearchBar}>
 								<FontAwesomeIcon icon={faMagnifyingGlass} />
 							</div>
-						</Nav.Link>
 
-						{isSearchSeen && (
-							<div style={{ display: "flex" }}>
-								<input
-									type='text'
-									placeholder='Enter dorm name'
-								/>
-								<button>Search</button>
-							</div>
-						)}
+
 						{!userIdentifier ? (
-							<button onClick={() => setLoginOpen(true)}>
+							<button  className="custom-nav-item" onClick={() => setLoginOpen(true)}>
 								Login
 							</button>
 						) : (
-							<button onClick={() => setUser(null)}>
+							<button  className="custom-nav-item"onClick={() => setUser(null)}>
 								Logout
 							</button>
 						)}
