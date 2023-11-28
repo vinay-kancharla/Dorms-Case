@@ -25,27 +25,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    /*
-    @GetMapping("/view")
-    public String getAllUsers(Model model) {
-        System.out.println("Getting all users");
-        List<User> users = userRepo.findAll();
-        model.addAttribute("us", users);
-        return "users/showAll";
-    }
-
-    @PostMapping("/add")
-    public String addUser(@RequestParam Map<String, String> newuser, HttpServletResponse response) {
-        System.out.println("Add user");
-        String newName = newuser.get("name");
-        String newPwd = newuser.get("password");
-        int newSize = Integer.parseInt(newuser.get("size"));
-        userRepo.save(new User(newName, newPwd, newSize));
-        response.setStatus(201);
-        return "user/addedUser";
-    }
-     */
-
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/sign-up")
     public Optional<UUID> signUp(@RequestBody UserDTO userDTO) {

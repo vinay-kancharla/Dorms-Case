@@ -33,6 +33,13 @@ public class ReviewController {
         return reviewService.getAll(dormName);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getAllReviews")
+    public ResponseEntity<List<Review>> getAllReviews(@RequestParam("dormName") String dormName) {
+        List<Review> reviews = reviewService.getAllReviews(dormName);
+        return ResponseEntity.ok(reviews);
+    }  
+
     @PostMapping("/upload")
     public ResponseEntity<Void> upload(@RequestBody ReviewDTO reviewDTO) {
         return reviewService.upload(reviewDTO);
