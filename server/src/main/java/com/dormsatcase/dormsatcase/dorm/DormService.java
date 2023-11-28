@@ -3,12 +3,15 @@ package com.dormsatcase.dormsatcase.dorm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 @Service
+@Slf4j
 public class DormService {
 
     @Autowired
@@ -20,6 +23,7 @@ public class DormService {
     }
 
     public List<Dorm> getAll(String experience) {
+        log.info("Getting all dorms in an experience.");
         return dormRepository.findByExperience(experience);
     }
 

@@ -17,8 +17,8 @@ public class Dorm {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "dorm_identifier")
-    private UUID dormIdentifier;
+    @Column(name = "dorm_id")
+    private UUID dormId;
 
     private String name;
 
@@ -40,8 +40,8 @@ public class Dorm {
         this.experience = experience;
     }
 
-    public UUID getDormIdentifier() {
-        return dormIdentifier;
+    public UUID getDormId() {
+        return dormId;
     }
 
     public String getName() {

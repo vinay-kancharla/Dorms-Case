@@ -16,7 +16,7 @@ export default function DormPage() {
 		async function getReviews() {
 			try {
 				const response = await fetch(
-					`http://localhost:8080/api/review/getAll?dormName=${dormId}`
+					`http://localhost:8080/api/review/getAllReviews?dormName=${dormId}`
 				);
 				const data = await response.json();
 				setReviews(data);
