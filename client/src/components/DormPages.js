@@ -15,12 +15,14 @@ const DormPages = () => {
   const [rating, setRating] = useState(0);
   const [textReview, setTextReview] = useState('');
   const[reviews, setReviews] = useState([]);
+  const [chooseImage, setChooseImage] = useState(null);
 
   const showModal = () => setShow(true);
 
   const handleRatingChange = (newRating) => {
     setRating(newRating);
   };
+
 
   const handleReviewTextChange = (e) => {
     setTextReview(e.target.value);
@@ -29,7 +31,13 @@ const DormPages = () => {
   function clearInputs() {
     setRating(0);
     setTextReview('');
+    setChooseImage(null);
   }
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setChooseImage(file);
+  };
 
   const closeModal = () => {
     setShow(false);
@@ -38,9 +46,10 @@ const DormPages = () => {
 
   function reviewPosting(
     rating,
-    textReview
+    textReview,
+    image
   ) {
-    return {rating, textReview};
+    return {rating, textReview, image};
   }
 
   function addAReview(review){
@@ -48,6 +57,7 @@ const DormPages = () => {
     setShow(false);
     clearInputs();
   }
+
 
   const containerStyle = {
     display: 'flex',
@@ -85,7 +95,7 @@ const DormPages = () => {
         <Modal.Body>
           <Form>
             <Form.Group controlId="rating">
-              <Form.Label>Star Rating</Form.Label>
+              <Form.Label>Star Rating: </Form.Label>
               <StarRatings
                 rating={rating}
                 starRatedColor="gold"
@@ -103,17 +113,22 @@ const DormPages = () => {
                 onChange={handleReviewTextChange}
               />
             </Form.Group>
+            <Form.Group controlId="image">
+              <Form.Label>Upload Image: </Form.Label>
+              <Form.Control 
+              type="file" 
+              accept="image/*" 
+              onChange={handleImageChange} />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={closeModal}>
-            Upload Image
-          </Button>
           <Button variant="success" onClick={() =>
               addAReview(
                 reviewPosting(
                   rating,
-                  textReview
+                  textReview,
+                  chooseImage
                 )
               )
             }>
@@ -157,7 +172,12 @@ const DormPages = () => {
               <FontAwesomeIcon icon={faThumbsDown} style={{ cursor: 'pointer' }} />
             </div>
             <div style={{ borderBottom: '2px solid black', flex: '2' }}></div>
-            Images:
+            Images: {review.image && (
+                    <img
+                      src={URL.createObjectURL(review.image)}
+                      style={{maxHeight: '300px', marginTop: '5px', maxWidth: '20%' }}
+                    />
+                  )}
             </TableCell>
             <br></br>
           </TableRow>
