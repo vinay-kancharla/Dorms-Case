@@ -1,211 +1,192 @@
-import React, { useState, useEffect } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
-import StarRatings from "react-star-ratings";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableRow from "@mui/material/TableRow";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from 'react';
+import { Button, Modal, Form } from 'react-bootstrap';
+import StarRatings from 'react-star-ratings';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
-const DormPages = ({ dormId }) => {
-	const [show, setShow] = useState(false);
-	const [starrating, setRating] = useState(0);
-	const [review, setTextReview] = useState("");
-	const [reviews, setReviews] = useState([]);
+const DormPages = () => {
 
-	const showModal = () => setShow(true);
+  const [show, setShow] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [textReview, setTextReview] = useState('');
+  const[reviews, setReviews] = useState([]);
+  const [chooseImage, setChooseImage] = useState(null);
 
-	const handleRatingChange = (newRating) => {
-		setRating(newRating);
-	};
+  const showModal = () => setShow(true);
 
-	const handleReviewTextChange = (e) => {
-		setTextReview(e.target.value);
-	};
+  const handleRatingChange = (newRating) => {
+    setRating(newRating);
+  };
 
-	function clearInputs() {
-		setRating(0);
-		setTextReview("");
-	}
 
-	const closeModal = () => {
-		setShow(false);
-		clearInputs();
-	};
+  const handleReviewTextChange = (e) => {
+    setTextReview(e.target.value);
+  };
 
-	function reviewPosting(rating, textReview) {
-		return { starrating: rating, review: textReview };
-	}
+  function clearInputs() {
+    setRating(0);
+    setTextReview('');
+    setChooseImage(null);
+  }
 
-	useEffect(() => {
-		async function getReviews() {
-			try {
-				const response = await fetch(
-					`http://localhost:8080/api/review/getAll?dormName=${dormId}`
-				);
-				const data = await response.json();
-				setReviews(data);
-			} catch (error) {
-				console.log("Error: ", error);
-			}
-		}
-		getReviews();
-	}, [dormId]);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setChooseImage(file);
+  };
 
-	function addAReview(review) {
-		setReviews((y) => y.concat([review]));
-		setShow(false);
-		clearInputs();
-	}
+  const closeModal = () => {
+    setShow(false);
+    clearInputs();
+  }
 
-	const containerStyle = {
-		display: "flex",
-		flexDirection: "column",
-		alignItems: "center",
-		height: "100vh",
-	};
+  function reviewPosting(
+    rating,
+    textReview,
+    image
+  ) {
+    return {rating, textReview, image};
+  }
 
-	const barStyle1 = {
-		height: "10px",
-		width: "70%",
-		backgroundColor: "#000000",
-		margin: "10px 0",
-	};
+  function addAReview(review){
+    setReviews((y) => y.concat([review]));
+    setShow(false);
+    clearInputs();
+  }
 
-	const barStyle2 = {
-		height: "10px",
-		width: "40%",
-		backgroundColor: "#000000",
-		margin: "10px 0",
-	};
 
-	const buttonContainerStyle = {
-		paddingRight: "100px",
-		position: "absolute",
-		top: 100,
-		right: 20,
-	};
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: '100vh', 
+  };
 
-	return (
-		<div style={containerStyle}>
-			<div style={buttonContainerStyle}>
-				<button className='btn btn-danger' onClick={showModal}>
-					Add a Review
-				</button>
-				<Modal show={show} onHide={closeModal}>
-					<Modal.Body>
-						<Form>
-							<Form.Group controlId='rating'>
-								<Form.Label>Star Rating</Form.Label>
-								<StarRatings
-									rating={starrating}
-									starRatedColor='gold'
-									changeRating={handleRatingChange}
-									numberOfStars={5}
-									starDimension='30px'
-								/>
-							</Form.Group>
-							<Form.Group controlId='textReview'>
-								<Form.Label>Review: </Form.Label>
-								<Form.Control
-									as='textarea'
-									rows={4}
-									value={review}
-									onChange={handleReviewTextChange}
-								/>
-							</Form.Group>
-						</Form>
-					</Modal.Body>
-					<Modal.Footer>
-						<Button variant='primary' onClick={closeModal}>
-							Upload Image
-						</Button>
-						<Button
-							variant='success'
-							onClick={() =>
-								addAReview(reviewPosting(starrating, review))
-							}
-						>
-							Validate and Publish
-						</Button>
-					</Modal.Footer>
-				</Modal>
-			</div>
-			<div style={barStyle1}></div>
-			<div style={barStyle2}></div>
-			<br></br>
+  const barStyle1 = {
+    height: '10px',
+    width: '70%', 
+    backgroundColor: '#000000', 
+    margin: '10px 0',
+  };
 
-			<TableContainer>
-				<Table>
-					<TableBody>
-						{console.log(reviews)}
-						{reviews.map((review) => (
-							<TableRow>
-								<TableCell
-									style={{
-										fontSize: "22px",
-										width: "80%",
-										margin: "10px 130px",
-										borderBottom: "2px solid black",
-										border: "4px solid black",
-										display: "flex",
-										flexDirection: "column",
-									}}
-								>
-									<div
-										style={{
-											display: "flex",
-											alignItems: "center",
-											marginBottom: "10px",
-										}}
-									>
-										Rating:
-										<StarRatings
-											rating={review.starrating}
-											starRatedColor='gold'
-											numberOfStars={5}
-											starDimension='30px'
-											starSpacing='2px'
-										/>
-									</div>
-									Description: {review.review}
-									<br></br>
-									<div
-										style={{
-											display: "flex",
-											justifyContent: "flex-end",
-										}}
-									>
-										<FontAwesomeIcon
-											icon={faThumbsUp}
-											style={{
-												marginRight: "10px",
-												cursor: "pointer",
-											}}
-										/>
-										<FontAwesomeIcon
-											icon={faThumbsDown}
-											style={{ cursor: "pointer" }}
-										/>
-									</div>
-									<div
-										style={{
-											borderBottom: "2px solid black",
-											flex: "2",
-										}}
-									></div>
-									Images:
-								</TableCell>
-								<br></br>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</TableContainer>
-		</div>
-	);
+  const barStyle2 = {
+    height: '10px',
+    width: '40%', 
+    backgroundColor: '#000000',
+    margin: '10px 0',
+  };
+
+  const buttonContainerStyle = {
+    paddingRight:'100px',
+    position: 'absolute',
+    top: 100,
+    right:20,
+  };
+
+
+  return (
+    <div style={containerStyle}>
+     <div style={buttonContainerStyle}><button className="btn btn-danger" onClick={showModal} >Add a Review</button> 
+      <Modal show={show} onHide={closeModal}>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="rating">
+              <Form.Label>Star Rating: </Form.Label>
+              <StarRatings
+                rating={rating}
+                starRatedColor="gold"
+                changeRating={handleRatingChange}
+                numberOfStars={5}
+                starDimension="30px"
+              />
+            </Form.Group>
+            <Form.Group controlId="textReview">
+              <Form.Label>Review: </Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={4}
+                value={textReview}
+                onChange={handleReviewTextChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="image">
+              <Form.Label>Upload Image: </Form.Label>
+              <Form.Control 
+              type="file" 
+              accept="image/*" 
+              onChange={handleImageChange} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={() =>
+              addAReview(
+                reviewPosting(
+                  rating,
+                  textReview,
+                  chooseImage
+                )
+              )
+            }>
+            Validate and Publish
+          </Button>
+        </Modal.Footer>
+      </Modal>
+     </div> 
+      <div style={barStyle1}></div>
+      <div style={barStyle2}></div>
+      <br></br>
+
+      <TableContainer>
+      <Table>
+        <TableBody>
+        {reviews.map((review) => (
+          <TableRow>
+            <TableCell style={{ 
+            fontSize: '22px', 
+            width: '80%', 
+            margin: '10px 130px', 
+            borderBottom: '2px solid black', 
+            border: '4px solid black', 
+            display: 'flex', 
+            flexDirection: 'column' 
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+              Rating: 
+              <StarRatings
+                rating={review.rating}
+                starRatedColor="gold"
+                numberOfStars={5}
+                starDimension="30px"
+                starSpacing="2px"
+              /> 
+            </div>
+            Description: {review.textReview}
+            <br></br>
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <FontAwesomeIcon icon={faThumbsUp} style={{ marginRight: '10px', cursor: 'pointer' }} />
+              <FontAwesomeIcon icon={faThumbsDown} style={{ cursor: 'pointer' }} />
+            </div>
+            <div style={{ borderBottom: '2px solid black', flex: '2' }}></div>
+            Images: {review.image && (
+                    <img
+                      src={URL.createObjectURL(review.image)}
+                      style={{maxHeight: '300px', marginTop: '5px', maxWidth: '20%' }}
+                    />
+                  )}
+            </TableCell>
+            <br></br>
+          </TableRow>
+))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </div>
+  );
 };
 
 export default DormPages;
