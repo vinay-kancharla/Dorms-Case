@@ -1,0 +1,18 @@
+{
+    "Staley": [
+      {
+        "starrating": 5
+      }
+    ],
+
+    "Tippit": [
+        {
+          "starrating": 4
+        }
+      ],
+    "Howe": [
+        {
+          "starrating": 3
+        }
+      ]
+}
