@@ -1,0 +1,18 @@
+{
+    "Taft": [
+      {
+        "starrating": 5
+      }
+    ],
+
+    "Smith": [
+        {
+          "starrating": 4
+        }
+      ],
+    "Taplin": [
+        {
+          "starrating": 3
+        }
+      ]
+}
