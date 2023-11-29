@@ -9,7 +9,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
+import com.dormsatcase.dormsatcase.user.User;
+import com.dormsatcase.dormsatcase.dorm.Dorm;
 import com.dormsatcase.dormsatcase.dorm.DormRepository;
+import com.dormsatcase.dormsatcase.user.UserRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.File;
@@ -17,6 +20,7 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -24,6 +28,12 @@ public class ReviewService {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private DormRepository dormRepository;
 
     public ResponseEntity<List<JsonNode>> getAll(String dormName) {
         log.info("Getting all reviews for a dorm.");
@@ -61,15 +71,25 @@ public class ReviewService {
         ReviewDTO dto = new ReviewDTO();
         dto.setReviewId(review.getReviewId());
         dto.setStarRating(review.getStarRating());
-        dto.setImageUrls(review.getImageUrls());
+        dto.setImageUrl(review.getImageUrl());
         dto.setLikes(review.getLikes());
         dto.setDislikes(review.getDislikes());
         dto.setBody(review.getBody());
         return dto;
     }
 
-    public ResponseEntity<Void> upload(ReviewDTO reviewDTO) {
-        return ResponseEntity.ok().build();
+    public Review addReview(ReviewAddDTO reviewAddDTO) {
+        User user = userRepository.findByUserId(reviewAddDTO.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
+        Dorm dorm = dormRepository.findByName(reviewAddDTO.getDormName()).orElseThrow(() -> new RuntimeException("Dorm not found"));
+        Review review = new Review();
+        review.setAuthor(user);
+        review.setDorm(dorm);
+        review.setStarRating(reviewAddDTO.getStarRating());
+        review.setImageUrl(reviewAddDTO.getImageUrl());
+        review.setLikes(reviewAddDTO.getLikes());
+        review.setDislikes(reviewAddDTO.getDislikes());
+        review.setBody(reviewAddDTO.getBody());
+        return reviewRepository.save(review);
     }
 
     public ResponseEntity<Void> delete(UUID reviewIdentifier) {

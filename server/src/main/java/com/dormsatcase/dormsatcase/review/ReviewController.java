@@ -40,9 +40,10 @@ public class ReviewController {
         return ResponseEntity.ok(reviews);
     }  
 
-    @PostMapping("/upload")
-    public ResponseEntity<Void> upload(@RequestBody ReviewDTO reviewDTO) {
-        return reviewService.upload(reviewDTO);
+    @PostMapping("/addReview")
+    public ResponseEntity<Review> addReview(@RequestBody ReviewAddDTO reviewAddDTO) {
+        Review review = reviewService.addReview(reviewAddDTO);
+        return new ResponseEntity<>(review, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete")

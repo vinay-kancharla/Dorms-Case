@@ -32,9 +32,8 @@ public class Review {
     @Column(nullable = false)
     private double starRating;
 
-    @ElementCollection
-    @Column(nullable = false)
-    private List<String> imageUrls;
+    @Column(nullable = true)
+    private String imageUrl;
 
     @Column(nullable = true)
     private Integer likes;
@@ -49,11 +48,11 @@ public class Review {
 
     }
 
-    public Review(User author, Dorm dorm, double starRating, List<String> imageUrls, String body) {
+    public Review(User author, Dorm dorm, double starRating, String imageUrl, String body) {
         this.author = author;
         this.dorm = dorm;
         this.starRating = starRating;
-        this.imageUrls = imageUrls != null ? imageUrls : new ArrayList<>();
+        this.imageUrl = imageUrl != null ? imageUrl : null;
         this.body = body;
     }
 
@@ -85,12 +84,12 @@ public class Review {
         this.starRating = starRating;
     }
 
-    public List<String> getImageUrls() {
-        return this.imageUrls;
+    public String getImageUrl() {
+        return this.imageUrl;
     }
 
-    public void setImageUrls(List<String> imageUrls) {
-        this.imageUrls = imageUrls != null ? imageUrls : new ArrayList<>();
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl != null ? imageUrl : null;
     }
     
     public Integer getLikes() {
