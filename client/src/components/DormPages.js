@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
 import Table from '@mui/material/Table';
@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
-const DormPages = () => {
+const DormPages = ({ dormId }) => {
 
   const [show, setShow] = useState(false);
   const [rating, setRating] = useState(0);
@@ -51,6 +51,21 @@ const DormPages = () => {
   ) {
     return {rating, textReview, image};
   }
+
+  useEffect(() => {
+		async function getReviews() {
+			try {
+				const response = await fetch(
+					`http://localhost:8080/api/review/getAll?dormName=${dormId}`
+				);
+				const data = await response.json();
+				setReviews(data);
+			} catch (error) {
+				console.log("Error: ", error);
+			}
+		}
+		getReviews();
+	}, [dormId]);
 
   function addAReview(review){
     setReviews((y) => y.concat([review]));
