@@ -9,81 +9,51 @@
 
   .navbar-search-results {
     position: absolute;
-    top: 100%; /* Positioned right below the search box */
-    left: auto; /* This should be set to auto */
-    right: 0; /* Aligns the results to the right edge of the navbar */
-    width: 300px; /* This should be the width of your search box */
-    max-height: 400px; /* Adjust the height as necessary */
+    top: 100%; 
+    left: auto; 
+    right: 0; 
+    width: 300px; 
+    max-height: 400px; 
     background-color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
     border-radius: 0 0 4px 4px;
-    overflow-y: auto; /* Allows scrolling within the dropdown */
-    z-index: 1000; /* To be on top of other content */
+    overflow-y: auto; 
+    z-index: 1;
   }
   
-  /* This class should be added to the container of the search box */
-  .search-box-container {
-    position: relative; /* Container for search input and results */
-    display: inline-block; /* Or flex, if needed */
+
+.search-box-container {
+    position: relative; 
+    display: inline-block; 
   }
-  .search-input {
-    /* Your styles for the search input */
-    width: 300px; /* Example width */
-  }
+.search-input {
+    width: 300px;
+    height: 40px;
+}
   
-/* Custom.css */
 .custom-navbar {
   display: flex;
-  justify-content: center; /* Center navbar contents horizontally */
-  align-items: center; /* Center navbar contents vertically */
+  justify-content: center; 
+  align-items: center; 
   height: 50%;
 }
 
 .custom-nav-item {
-  padding: 10px; /* Adds padding around each navbar item */
+  padding: 10px; 
   display: flex;
-  align-items: center; /* Centers the items vertically */
+  align-items: center; 
 }
 
-/* Adjust the padding and margin of the navbar brand and other elements as necessary */
-.navbar-brand, .navbar-nav .nav-link {
-  padding: 10px; /* Adds padding for better spacing */
+.cool-button{
+  margin: 0 10px; 
+  padding: 5px 10px; 
+  border-radius: 40px; 
 }
 
-/* If you have a custom search bar within the navbar */
-.custom-search-input {
-  margin: 0 10px; /* Space between search bar and other elements */
-  padding: 5px 10px; /* Padding inside the search bar */
-  border-radius: 4px; /* Optional: rounded corners for the input */
-}
-
-/* Ensuring that the navbar remains responsive */
-@media (max-width: 992px) { /* Adjust this breakpoint as necessary */
-  .custom-navbar {
-    flex-direction: column;
-  }
-}
-
-/* The brand will remain centered regardless of the SBar component */
 .navbar-brand {
-  flex-grow: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center; 
   text-align: center;
 }
 
-/* Overlay SBar */
-.searchbar-overlay {
-  position: absolute;
-  top: 100%; /* Directly below the navbar */
-  left: 0;
-  right: 0;
-  z-index: 10; /* Make sure it stacks on top */
-  background-color: #fff; /* Or any other color that suits your design */
-  border: 1px solid #ddd; /* Optional border */
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Optional shadow for better visibility */
-  display: none; /* Hide by default */
-}
-
-/* Show SBar when it is active */
-.searchbar-active {
-  display: block;
-}

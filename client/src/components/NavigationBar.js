@@ -79,6 +79,12 @@ const NavigationBar = () => {
 		}
 	};
 
+	const searchCallback = (data) => {
+		if(data && data.action === "clicked"){
+			setSearchSeen(false)
+		}
+	}
+
 	return (
 		<div>
 			<Navbar expand='lg' bg='primary' className="custom-navbar">
@@ -157,9 +163,7 @@ const NavigationBar = () => {
 							</Link>
 						</Navbar.Brand>
 
-
-						
-						{isSearchSeen && <SearchBar/> }
+						{isSearchSeen && <SearchBar callback={searchCallback}/> }
 
 
 							<div  className="custom-nav-item" onClick={changeSearchBar}>
@@ -168,11 +172,11 @@ const NavigationBar = () => {
 
 
 						{!userIdentifier ? (
-							<button  className="custom-nav-item" onClick={() => setLoginOpen(true)}>
+							<button  className="custom-nav-item cool-button" onClick={() => setLoginOpen(true)}>
 								Login
 							</button>
 						) : (
-							<button  className="custom-nav-item"onClick={() => setUser(null)}>
+							<button  className="custom-nav-item cool-button"onClick={() => setUser(null)}>
 								Logout
 							</button>
 						)}

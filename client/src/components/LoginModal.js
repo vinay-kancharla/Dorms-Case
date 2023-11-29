@@ -94,7 +94,6 @@ const LoginModal = (props) => {
 	};
 	return (
 		<div>
-			{/*Dialog*/}
 			{
 				<DialogTitle sx={{ bgcolor: "primary.light", color: "white" }}>
 					&nbsp; Login
