@@ -57,3 +57,29 @@
   text-align: center;
 }
 
+
+.fabutton {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.fabutton:hover,
+.fabutton:focus,
+.fabutton:active {
+  outline: none;
+}
+
+.like {
+  color: rgb(21, 202, 21);
+}
+
+.dislike {
+  color: red;
+}
+
+.flex-item {
+  flex: 1; 
+  justify-content: flex-end,
+}
