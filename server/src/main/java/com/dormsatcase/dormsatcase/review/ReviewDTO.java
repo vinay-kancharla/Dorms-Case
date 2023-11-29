@@ -6,9 +6,10 @@ import java.util.UUID;
 
 @Data
 public class ReviewDTO {
-    private UUID authorIdentifier;
-    private String dormName;
-    private int numStars;
+    private UUID reviewId;
+    private double starRating;
     private List<String> imageUrls;
+    private Integer likes;
+    private Integer dislikes;
     private String body;
 }

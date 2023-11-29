@@ -35,8 +35,8 @@ public class ReviewController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getAllReviews")
-    public ResponseEntity<List<Review>> getAllReviews(@RequestParam("dormName") String dormName) {
-        List<Review> reviews = reviewService.getAllReviews(dormName);
+    public ResponseEntity<List<ReviewDTO>> getAllReviews(@RequestParam("dormName") String dormName) {
+        List<ReviewDTO> reviews = reviewService.getAllReviews(dormName);
         return ResponseEntity.ok(reviews);
     }  
 

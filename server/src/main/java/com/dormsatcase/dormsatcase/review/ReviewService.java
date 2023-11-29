@@ -15,6 +15,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import java.util.List;
 
 @Service
@@ -51,8 +52,20 @@ public class ReviewService {
         }
     }
 
-    public List<Review> getAllReviews(String dormName) {
-        return reviewRepository.findByDormName(dormName);
+    public List<ReviewDTO> getAllReviews(String dormName) {
+        List<Review> reviews = reviewRepository.findByDormName(dormName);
+        return reviews.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
+    private ReviewDTO convertToDTO(Review review) {
+        ReviewDTO dto = new ReviewDTO();
+        dto.setReviewId(review.getReviewId());
+        dto.setStarRating(review.getStarRating());
+        dto.setImageUrls(review.getImageUrls());
+        dto.setLikes(review.getLikes());
+        dto.setDislikes(review.getDislikes());
+        dto.setBody(review.getBody());
+        return dto;
     }
 
     public ResponseEntity<Void> upload(ReviewDTO reviewDTO) {
