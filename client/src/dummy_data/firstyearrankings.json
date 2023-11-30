@@ -1,0 +1,56 @@
+[
+  {
+    "dorm": "Taft House",
+    "rating": 5
+  },
+  {
+    "dorm": "Smith House",
+    "rating": 4
+  },
+  {
+    "dorm": "Taplin House",
+    "rating": 3
+  },
+  {
+    "dorm": "Clarke Tower",
+    "rating": 1
+  },
+  {
+    "dorm": "Storrs House",
+    "rating": 2
+  },
+
+  {
+    "dorm": "Norton House",
+    "rating": 3
+  },
+  {
+    "dorm": "Hitchcock House",
+    "rating": 3
+  },
+  {
+    "dorm": "Tyler House",
+    "rating": 2
+  },
+  {
+    "dorm": "Raymond House",
+    "rating": 2
+  },
+
+  {
+    "dorm": "Sherman House",
+    "rating": 2
+  },
+  {
+    "dorm": "Cutler House",
+    "rating": 2
+  },
+  {
+    "dorm": "Pierce House",
+    "rating": 3
+  }
+
+
+
+
+]

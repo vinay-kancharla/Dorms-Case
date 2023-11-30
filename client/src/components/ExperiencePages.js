@@ -6,7 +6,6 @@ const ExperiencePages = () => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100vh', 
   };
 
   const barStyle1 = {

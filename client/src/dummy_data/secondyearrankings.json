@@ -1,0 +1,38 @@
+[
+  {
+    "dorm": "Staley",
+    "rating": 5
+  },
+  {
+    "dorm": "Tippit",
+    "rating": 4
+  },
+  {
+    "dorm": "Howe",
+    "rating": 3
+  },
+  {
+    "dorm": "Clarke",
+    "rating": 1
+  },
+  {
+    "dorm": "Alumni",
+    "rating": 3
+  },
+  {
+    "dorm": "Kusch",
+    "rating": 3
+  },
+  {
+    "dorm": "Glaser",
+    "rating": 2
+  },
+  {
+    "dorm": "Michelson",
+    "rating": 2
+  },
+  {
+    "dorm": "Triangle",
+    "rating": 1
+  }
+]
