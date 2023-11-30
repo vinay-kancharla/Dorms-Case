@@ -50,6 +50,7 @@ const DormPages = ({ dormId }) => {
 
 	}, [dormId]); // Make sure to include useUser in the dependency array if it uses any state or props
 
+
 	const showModal = () => {
 		if(user){
 			setShow(true);
@@ -181,6 +182,15 @@ const DormPages = ({ dormId }) => {
 
 	const handleImageChange = (e) => {
 		const file = e.target.files[0];
+		if (file) {
+			const fileReader = new FileReader();
+			fileReader.onloadend = () => {
+			  const base64Representation = fileReader.result;
+			  setChooseImage(base64Representation); // Store the Base64 string in the state
+			  console.log(base64Representation)
+			};
+			reader.readAsDataURL(file);
+		  }
 		setChooseImage(file);
 	};
 
@@ -385,12 +395,12 @@ const DormPages = ({ dormId }) => {
 											{review.dislikes}
 										</div>
 									</div>
-									Images:{" "}
+									Images:
 									{review.image && (
 										<img
-											src={URL.createObjectURL(
-												review.image
-											)}
+											src={
+												review.imageUrl
+											}
 											style={{
 												maxHeight: "300px",
 												marginTop: "5px",
