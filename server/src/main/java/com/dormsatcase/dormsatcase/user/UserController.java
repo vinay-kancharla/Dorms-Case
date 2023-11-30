@@ -1,6 +1,8 @@
 package com.dormsatcase.dormsatcase.user;
 
+import java.util.HashMap;
 import java.util.Optional;
+import java.util.Map;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,14 +29,30 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/sign-up")
-    public Optional<UUID> signUp(@RequestBody UserDTO userDTO) {
-        return userService.signUp(userDTO.getEmail(), userDTO.getPassword());
+    public Map<String, Object> signUp(@RequestBody UserDTO userDTO) {
+        Map<String, Object> map = new HashMap<>();
+        Optional<UUID> userId = userService.signUp(userDTO.getEmail(), userDTO.getPassword());
+        if (userId.isPresent()) {
+            map.put("userId", userId.get());
+        }
+        else {
+            map.put("userId", null);
+        }
+        return map;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/sign-in")
-    public Optional<UUID> signIn(@RequestParam("email")  String email,
+    public Map<String, Object> signIn(@RequestParam("email")  String email,
                                  @RequestParam("password") String password) {
-        return userService.signIn(email, password);
+        Map<String, Object> map = new HashMap<>();
+        Optional<UUID> userId = userService.signIn(email, password);
+        if (userId.isPresent()) {
+            map.put("userId", userId.get());
+        }
+        else {
+            map.put("userId", null);
+        }
+        return map;
     }
 }
