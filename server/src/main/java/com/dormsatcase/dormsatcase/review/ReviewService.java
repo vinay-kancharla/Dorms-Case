@@ -6,6 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Base64;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,6 +17,12 @@ import com.dormsatcase.dormsatcase.dorm.Dorm;
 import com.dormsatcase.dormsatcase.dorm.DormRepository;
 import com.dormsatcase.dormsatcase.user.UserRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
+
+import com.dormsatcase.dormsatcase.review.Review;
+import com.dormsatcase.dormsatcase.review.ReviewAddDTO;
+import com.dormsatcase.dormsatcase.review.ReviewDTO;
+import com.dormsatcase.dormsatcase.review.ReviewRepository;
+import com.dormsatcase.dormsatcase.review.ImageUploadService;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +37,9 @@ public class ReviewService {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    @Autowired
+    private ImageUploadService imageUploadService;
 
     @Autowired
     private UserRepository userRepository;
@@ -78,14 +90,38 @@ public class ReviewService {
         return dto;
     }
 
+    private static MultipartFile base64ToMultipartFile(String base64) throws IOException {
+        if (base64.contains(",")) {
+            base64 = base64.split(",")[1];
+        }
+        byte[] decodedBytes = Base64.getDecoder().decode(base64);
+
+        return new MockMultipartFile("file", "filename.png", "image/png", decodedBytes);
+    }
+
     public Review addReview(ReviewAddDTO reviewAddDTO) {
         User user = userRepository.findByUserId(reviewAddDTO.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
         Dorm dorm = dormRepository.findByName(reviewAddDTO.getDormName()).orElseThrow(() -> new RuntimeException("Dorm not found"));
+
+        String imageUrl = "";
+        MultipartFile imageFile = null;
+        boolean failed = false;
+        try {
+            imageFile = base64ToMultipartFile(reviewAddDTO.getImgBase64());
+        }
+        catch (Exception e) {
+            log.info(e.getMessage());
+            failed = true;
+        }
+        if (!failed) {
+            imageUrl = this.imageUploadService.uploadFile(imageFile);
+        }
+
         Review review = new Review();
         review.setAuthor(user);
         review.setDorm(dorm);
         review.setStarRating(reviewAddDTO.getStarRating());
-        review.setImageUrl(reviewAddDTO.getImageUrl());
+        review.setImageUrl(imageUrl);
         review.setLikes(reviewAddDTO.getLikes());
         review.setDislikes(reviewAddDTO.getDislikes());
         review.setBody(reviewAddDTO.getBody());
