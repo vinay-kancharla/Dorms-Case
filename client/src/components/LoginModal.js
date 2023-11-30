@@ -59,7 +59,7 @@ const LoginModal = (props) => {
 			if (response.ok) {
 				const userProfile = await response.json(); // should have UUID, reviews liked and reviews disliked 
 				console.log("user profile " + userProfile)
-				if (userProfile === null) {
+				if (userProfile === null || userProfile.userId === null) {
 					console.log(
 						"Failed to login account due to invalid credentials"
 					);
