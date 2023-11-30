@@ -9,12 +9,12 @@ function HomePage() {
   return (
     <div>
       <NavigationBar />
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <PodiumGraph data={firstyearrankings} title="First-Year" />
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '100px' }}>
+      <PodiumGraph data={firstyearrankings} title="First Year Experience" />
       <div></div>
-      <PodiumGraph data={secondyearrankings} title="Second-Year" />
+      <PodiumGraph data={secondyearrankings} title="Second Year Experience" />
       <div></div>
-      <PodiumGraph data={upperclassrankings} title="Upperclassmen" />
+      <PodiumGraph data={upperclassrankings} title="Upperclass Experience" />
       </div>
     </div>
   );

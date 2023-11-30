@@ -22,6 +22,10 @@ const DormPages = ({ dormId }) => {
 	const [photoViewerOpen, setPhotoViewerOpen] = useState(false);
 	const [currentImageUrl, setCurrentImageUrl] = useState('');
 
+	const [userLiked, setUserliked] = useState([])
+	const [userDisliked, setUserDisliked] = useState([])
+
+
 	const openViewer = (url) => {
 		setPhotoViewerOpen(true);
 		setCurrentImageUrl(url)
@@ -38,17 +42,6 @@ const DormPages = ({ dormId }) => {
 				`http://localhost:8080/api/review/getAllReviews?dormName=${dormId}`
 			);
 			let reviewsData = await response.json();
-
-			// Check for null user object
-			// if (user) {
-			// 	// Add 'userLiked' and 'userDisliked' properties to each review
-			// 	reviewsData = reviewsData.map((review) => ({
-			// 		...review,
-			// 		userLiked: user.LikedReviews.includes(review.id),
-			// 		userDisliked: user.DislikedReviews.includes(review.id),
-			// 	}));
-			// }
-
 			setReviews(reviewsData);
 		} catch (error) {
 			console.log("Error: ", error);
@@ -66,7 +59,7 @@ const DormPages = ({ dormId }) => {
 		if(user){
 			setShow(true);
 		}else {
-			toast.error("Not loggged in!")
+			toast.error("Not logged in!")
 		}
 	}
 	const handleRatingChange = (newRating) => {
@@ -77,112 +70,185 @@ const DormPages = ({ dormId }) => {
 		setTextReview(e.target.value);
 	};
 
+
 	const likeClicked = async (index) => {
-		let flag_disliked = false;
-		if (user && user.userId !== "") {
-			// check to see if in disliked
-			for (let i = 0; i < user.dislikedReviews.length; i++) {
-				if (user.dislikedReviews[i] === reviews[index]) {
-					flag_disliked = true;
-				}
-			}
-
-			if (flag_disliked === true) {
-				return;
-			}
-
-			const url = "http://localhost:8080/api/review/liked";
-			const requestBody = {
-				userUUID: user.userId,
-				reviewId: reviews[index].reviewId,
-			};
-
+		if (user && user.userId !== ''){
 			try {
-				const response = await fetch(url, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(requestBody),
-				});
+				let reviewIden = reviews[index].reviewId
+				const requestBody = {
+					userId: user.userId,
+				};
+				const response = await fetch(
+					`http://localhost:8080/api/review/${reviewIden}/toggleLike`
+					, {
+						method: 'POST',
+						headers: {
+						  'Content-Type': 'application/json',
+						},
+						body: JSON.stringify(requestBody),
+					  });
+				if(response.ok){
+					// if(userLiked.includes(reviews[index].reviewId)){
+					// 	const newUserLiked = userLiked.filter(id => id !== reviews[index].reviewId);
+ 					// 	 setUserliked(newUserLiked);
+					// } else {
+					// 	setUserliked([...userLiked,reviews[index].reviewId])
+					// }
+					// let res = response.json()
+					// setUserDisliked(res.dislikedReviews)
+					// setUserliked(res.likedReviews)
 
-				if (!response.ok) {
-					console.log("Not ok push");
-					return;
-				} else {
-					const responseData = await response.json();
-					console.log("Response from the server:", responseData);
-					setUser((prevUser) => ({
-						...prevUser,
-						likedReviews: response.likedReviews, // only update the name property, keep everything else the same
-						dislikedReviews: response.dislikedReviews,
-					}));
-					let updatedReviews = reviews.map((review, idx) => {
-						if (idx === index) {
-							return { ...review, likes: review.likes + 1 };
-						}
-						return review;
-					});
-
-					// Update the state with the new array
-					setReviews(updatedReviews);
+					getReviews();
 				}
 
-				// Here you can handle the response, e.g., updating state or UI
 			} catch (error) {
-				console.error("Error sending like:", error);
+				console.log("Error: ", error);
 			}
 		} else {
-			return;
+			return 
 		}
+		// let flag_disliked = false;
+		// if (user && user.userId !== "") {
+		// 	// check to see if in disliked
+		// 	for (let i = 0; i < user.dislikedReviews.length; i++) {
+		// 		if (user.dislikedReviews[i] === reviews[index]) {
+		// 			flag_disliked = true;
+		// 		}
+		// 	}
+
+		// 	if (flag_disliked === true) {
+		// 		return;
+		// 	}
+
+		// 	const url = "http://localhost:8080/api/review/liked";
+		// 	const requestBody = {
+		// 		userUUID: user.userId,
+		// 		reviewId: reviews[index].reviewId,
+		// 	};
+
+		// 	try {
+		// 		const response = await fetch(url, {
+		// 			method: "POST",
+		// 			headers: {
+		// 				"Content-Type": "application/json",
+		// 			},
+		// 			body: JSON.stringify(requestBody),
+		// 		});
+
+		// 		if (!response.ok) {
+		// 			console.log("Not ok push");
+		// 			return;
+		// 		} else {
+		// 			const responseData = await response.json();
+		// 			console.log("Response from the server:", responseData);
+		// 			setUser((prevUser) => ({
+		// 				...prevUser,
+		// 				likedReviews: response.likedReviews, // only update the name property, keep everything else the same
+		// 				dislikedReviews: response.dislikedReviews,
+		// 			}));
+		// 			let updatedReviews = reviews.map((review, idx) => {
+		// 				if (idx === index) {
+		// 					return { ...review, likes: review.likes + 1 };
+		// 				}
+		// 				return review;
+		// 			});
+
+		// 			// Update the state with the new array
+		// 			setReviews(updatedReviews);
+		// 		}
+
+		// 		// Here you can handle the response, e.g., updating state or UI
+		// 	} catch (error) {
+		// 		console.error("Error sending like:", error);
+		// 	}
+		// } else {
+		// 	return;
+		// }
 	};
 
 	const dislikeClicked = async (index) => {
-		let flag_liked = false;
-		if (user && user.userId != "") {
-			// check to see if in disliked
-			for (let i = 0; i < user.likedReviews.length; i++) {
-				if (user.dislikedReviews[i] === reviews[index]) {
-					flag_liked = true;
-				}
-			}
-
-			if (flag_liked === true) {
-				return;
-			}
-
-			const url = "http://localhost:8080/api/review/disliked";
-			const requestBody = {
-				userUUID: user.userId,
-				reviewId: reviews[index].reviewId,
-			};
-
+		if (user && user.userId !== ''){
 			try {
-				const response = await fetch(url, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(requestBody),
-				});
+				let reviewIden = reviews[index].reviewId
+				const requestBody = {
+					userId: user.userId,
+				};
+			
+				const response = await fetch(
+					`http://localhost:8080/api/review/${reviewIden}/toggleDislike`
+					, {
+						method: 'POST',
+						headers: {
+						  'Content-Type': 'application/json',
 
-				if (!response.ok) {
-					console.log("Not ok push");
-					return;
-				} else {
-					const responseData = await response.json();
-					console.log("Response from the server:", responseData);
+						},
+						body: JSON.stringify(requestBody),
+					  });
+				if(response.ok){
+					// if(userDisliked.includes(reviews[index].reviewId)){
+					// 	const newUserDisiked = userLiked.filter(id => id !== reviews[index].reviewId);
+ 					// 	 setUserDisliked(newUserDisiked);
+					// } else {
+					// 	setUserDisliked([...userDisliked,reviews[index].reviewId])
+					// }
+					// let res = response.JSON()
+					// console.log(res.dislikedReviews)
+					// setUserDisliked(res.dislikedReviews)
+					// setUserliked(res.likedReviews)
+					getReviews();
 				}
 
-
-
-				// Here you can handle the response, e.g., updating state or UI
 			} catch (error) {
-				console.error("Error sending like:", error);
+				console.log("Error: ", error);
 			}
 		} else {
-			return;
+			return 
 		}
+		// let flag_liked = false;
+		// if (user && user.userId != "") {
+		// 	// check to see if in disliked
+		// 	// for (let i = 0; i < user.likedReviews.length; i++) {
+		// 	// 	if (user.dislikedReviews[i] === reviews[index]) {
+		// 	// 		flag_liked = true;
+		// 	// 	}
+		// 	// }
+
+		// 	if (flag_liked === true) {
+		// 		return;
+		// 	}
+
+		// 	const url = "http://localhost:8080/api/review/disliked";
+		// 	const requestBody = {
+		// 		userUUID: user.userId,
+		// 		reviewId: reviews[index].reviewId,
+		// 	};
+
+		// 	try {
+		// 		const response = await fetch(url, {
+		// 			method: "POST",
+		// 			headers: {
+		// 				"Content-Type": "application/json",
+		// 			},
+		// 			body: JSON.stringify(requestBody),
+		// 		});
+
+		// 		if (!response.ok) {
+		// 			console.log("Not ok push");
+		// 			return;
+		// 		} else {
+		// 			const responseData = await response.json();
+		// 			console.log("Response from the server:", responseData);
+		// 		}
+
+
+
+		// 		// Here you can handle the response, e.g., updating state or UI
+		// 	} catch (error) {
+		// 		console.error("Error sending like:", error);
+		// 	}
+		// } else {
+		// 	return;
+		// }
 	};
 
 	function clearInputs() {
@@ -383,7 +449,7 @@ const DormPages = ({ dormId }) => {
 										<div className='like'>
 											{review.likes}
 											<button
-												className='fabutton like'
+												className={`fabutton like ${userLiked.includes(review) ? 'like' : ''}`}
 												onClick={() =>
 													likeClicked(index)
 												}
@@ -396,8 +462,9 @@ const DormPages = ({ dormId }) => {
 										<div className='dislike'>
 											<button
 												type='button'
-												className='fabutton dislike'
-												onClick={dislikeClicked}
+												className= {`fabutton dislike ${userDisliked.includes(review) ? 'dislike' : ''}`}
+												onClick={() =>
+													dislikeClicked(index)}
 											>
 												<FontAwesomeIcon
 													icon={faThumbsDown}

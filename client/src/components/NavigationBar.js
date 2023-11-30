@@ -153,8 +153,10 @@ const NavigationBar = () => {
 								)
 							)}
 						</NavDropdown>
-
+						<div style={{ flex: 1 }}></div>
 						<Navbar.Brand  className="navbar-brand ">
+
+
 							<Link
 								style={{
 									textDecoration: "none",
@@ -166,6 +168,7 @@ const NavigationBar = () => {
 								Dorms @ Case
 							</Link>
 						</Navbar.Brand>
+						<div style={{ flex: 1.5 }}></div>
 
 						{isSearchSeen && <SearchBar callback={searchCallback}/> }
 

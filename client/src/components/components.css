@@ -114,3 +114,23 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial', sans-serif;
+  color: #4a4a4a;
+}
+
+.rating-number {
+  font-size: 3em;
+  font-weight: bold;
+  color: #211b01; /* Gold color for the rating number */
+}
+
+.rating-max {
+  font-size: 2em;
+  color: #c0b7b7; /* Lighter color for the max rating */
+  margin-left: 5px;
+}

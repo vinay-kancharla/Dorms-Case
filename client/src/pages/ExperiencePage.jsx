@@ -39,12 +39,6 @@ export default function ExperiencePage() {
       <h1 className="display-4" style={h1Style}>
         {experienceId}
       </h1>
-      {dorms.map((dorm, index) => (
-        <span key={index}>
-          {dorm.name}
-          <br />
-        </span>
-      ))}
       <ExperiencePages />
       {experienceId === 'First Year Experience' && (
         <CompleteBarGraph data={firstyearrankings} title={experienceId} />
