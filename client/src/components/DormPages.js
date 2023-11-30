@@ -407,7 +407,7 @@ const DormPages = ({ dormId }) => {
 										</div>
 									</div>
 									Images:
-									{review.imageUrl ? (
+									{review.imageUrl && (
 										<div>
 
 
@@ -429,7 +429,7 @@ const DormPages = ({ dormId }) => {
 												</div>
 											)}
 										</div>
-									):(<>Hi</>)}
+									)}
 								</TableCell>
 								<br></br>
 							</TableRow>
