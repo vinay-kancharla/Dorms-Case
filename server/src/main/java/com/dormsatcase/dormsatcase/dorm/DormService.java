@@ -1,6 +1,7 @@
 package com.dormsatcase.dormsatcase.dorm;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
@@ -29,30 +30,7 @@ public class DormService {
         return dormRepository.findByExperience(experience);
     }
 
-    public List<Dorm> getTopThree(String experience) {
-        // List<Dorm> dorms = new ArrayList<>();
-        // dorms.add(getDummy());
-        // return dorms;
-        return null;
+    public List<Dorm> getAllRanked(String experience) {
+        return dormRepository.findByExperienceOrderByAverageRatingDesc(experience);
     }
-
-    // private Dorm getDummy() {
-    //     Dorm dorm = new Dorm();
-    //     dorm.setName("Kusch");
-    //     dorm.setExperience("SECOND_YEAR");
-    //     dorm.setOverallRating(BigDecimal.valueOf(5.0));
-    //     HashMap<Integer, Integer> starCounts = new HashMap<>();
-    //     starCounts.put(1, 0);
-    //     starCounts.put(2, 0);
-    //     starCounts.put(3, 0);
-    //     starCounts.put(4, 0);
-    //     starCounts.put(5, 10);
-    //     List<String> imageUrls = new ArrayList<>();
-    //     imageUrls.add("https://case.edu/housing/sites/case.edu.housing/files/styles/hero_one_column/public/2019-05/DSC09579.JPG?h=7686d427&itok=JauUPLAC");
-    //     dorm.setStarCounts(starCounts);
-    //     dorm.setImageUrls(imageUrls);
-    //     dorm.setReviews(new ArrayList<>());
-    //     return dorm;
-    // }
-
 }

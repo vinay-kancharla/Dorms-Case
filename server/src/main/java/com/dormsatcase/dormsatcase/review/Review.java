@@ -10,6 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.dormsatcase.dormsatcase.dorm.Dorm;
 import com.dormsatcase.dormsatcase.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
@@ -23,10 +24,12 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User author;
 
     @ManyToOne
     @JoinColumn(name = "dorm_id", nullable = false)
+    @JsonBackReference
     private Dorm dorm;
 
     @Column(nullable = false)

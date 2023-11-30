@@ -60,6 +60,7 @@ public class ReviewController {
         return ResponseEntity.ok(response);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/delete")
     public ResponseEntity<Void> delete(UUID reviewIdentifier) {
         return reviewService.delete(reviewIdentifier);

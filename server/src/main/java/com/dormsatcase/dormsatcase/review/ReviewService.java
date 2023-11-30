@@ -103,6 +103,15 @@ public class ReviewService {
         return new MockMultipartFile("file", "filename.png", "image/png", decodedBytes);
     }
 
+    private void updateAverageRating(String dormName) {
+        List<Review> reviews = reviewRepository.findByDormName(dormName);
+        double averageRating = reviews.stream().mapToDouble(Review::getStarRating).average().orElse(0.0);
+        Dorm dorm = dormRepository.findByName(dormName).orElseThrow(() -> new RuntimeException("Dorm not found"));
+        dorm.setAverageRating(averageRating);
+        dormRepository.save(dorm);
+    }
+    
+    @Transactional
     public Review addReview(ReviewAddDTO reviewAddDTO) {
         User user = userRepository.findByUserId(reviewAddDTO.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
         Dorm dorm = dormRepository.findByName(reviewAddDTO.getDormName()).orElseThrow(() -> new RuntimeException("Dorm not found"));
@@ -129,7 +138,11 @@ public class ReviewService {
         review.setLikes(reviewAddDTO.getLikes());
         review.setDislikes(reviewAddDTO.getDislikes());
         review.setBody(reviewAddDTO.getBody());
-        return reviewRepository.save(review);
+        review = reviewRepository.save(review);
+
+        updateAverageRating(dorm.getName());
+
+        return review;
     }
 
     private List<ReviewDTO> convertToReviewDTOs(Set<Review> reviews) {

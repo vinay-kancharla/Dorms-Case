@@ -32,8 +32,9 @@ public class DormController {
         return dormService.getAll(experience);
     }
 
-    @GetMapping("/getTopThree")
-    public List<Dorm> getTopThree(@RequestParam("experience") String experience) {
-        return dormService.getTopThree(experience);
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getAllRanked")
+    public List<Dorm> getAllRanked(@RequestParam("experience") String experience) {
+        return dormService.getAllRanked(experience);
     }
 }
