@@ -62,6 +62,10 @@ const NavigationBar = () => {
 		}
 	};
 
+	const logout = () => {
+		setUser(null);
+		localStorage.removeItem('user');
+	}
 	const signupCallback = (data) => {
 		// if (data && (data.action === 'submitted' || data.action === 'cancelled')) {
 		//   setSignupOpen(false);
@@ -176,7 +180,7 @@ const NavigationBar = () => {
 								Login
 							</button>
 						) : (
-							<button  className="custom-nav-item cool-button"onClick={() => setUser(null)}>
+							<button  className="custom-nav-item cool-button"onClick={logout}>
 								Logout
 							</button>
 						)}

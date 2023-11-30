@@ -102,6 +102,14 @@ const SignupModal = (props) => {
 			action: "cancelled",
 		});
 	};
+
+	const validateEmail = (email) => {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return emailRegex.test(email);
+	  };
+	  
+
+
 	return (
 		<div>
 			{/*Dialog*/}
@@ -117,6 +125,7 @@ const SignupModal = (props) => {
 						<TextField
 							label='Email'
 							placeholder='Email'
+							type='Email'
 							fullWidth
 							error={emailError}
 							helperText={emailValidator}

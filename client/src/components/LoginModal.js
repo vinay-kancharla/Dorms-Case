@@ -55,17 +55,18 @@ const LoginModal = (props) => {
 			const response = await fetch(
 				`http://localhost:8080/api/user/sign-in?email=${emailValue}&password=${passwordValue}`
 			);
-
+			console.log(response)
 			if (response.ok) {
-				const userIdentifier = await response.text();
-				if (userIdentifier === "null") {
+				const userProfile = await response.json(); // should have UUID, reviews liked and reviews disliked 
+				console.log("user profile " + userProfile)
+				if (userProfile === null) {
 					console.log(
 						"Failed to login account due to invalid credentials"
 					);
 					toast.error("Account login UNSUCCESSFUL");
 				} else {
 					console.log("Account login successfully");
-					setUser(userIdentifier);
+					setUser(userProfile);
 
 					props.parentCallback({
 						action: "account login successful",

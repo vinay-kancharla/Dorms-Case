@@ -39,7 +39,8 @@ public class ReviewController {
         List<ReviewDTO> reviews = reviewService.getAllReviews(dormName);
         return ResponseEntity.ok(reviews);
     }  
-
+    
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/addReview")
     public ResponseEntity<Review> addReview(@RequestBody ReviewAddDTO reviewAddDTO) {
         Review review = reviewService.addReview(reviewAddDTO);

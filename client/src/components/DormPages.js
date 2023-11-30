@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import "./components.css";
 import { useUser } from "../UserContext";
+import { toast } from "react-toastify";
+
 
 const DormPages = ({ dormId }) => {
 	const [show, setShow] = useState(false);
@@ -18,36 +20,43 @@ const DormPages = ({ dormId }) => {
 	const [reviews, setReviews] = useState([]);
 	const [chooseImage, setChooseImage] = useState(null);
 	const { user, setUser } = useUser();
+	async function getReviews() {
+		try {
+			const response = await fetch(
+				`http://localhost:8080/api/review/getAllReviews?dormName=${dormId}`
+			);
+			let reviewsData = await response.json();
+
+			// Check for null user object
+			// if (user) {
+			// 	// Add 'userLiked' and 'userDisliked' properties to each review
+			// 	reviewsData = reviewsData.map((review) => ({
+			// 		...review,
+			// 		userLiked: user.LikedReviews.includes(review.id),
+			// 		userDisliked: user.DislikedReviews.includes(review.id),
+			// 	}));
+			// }
+
+			setReviews(reviewsData);
+		} catch (error) {
+			console.log("Error: ", error);
+		}
+	}
+
 
 	useEffect(() => {
-		async function getReviews() {
-			try {
-				const response = await fetch(
-					`http://localhost:8080/api/review/getAllReviews?dormName=${dormId}`
-				);
-				let reviewsData = await response.json();
-
-				// Check for null user object
-				if (user) {
-					// Add 'userLiked' and 'userDisliked' properties to each review
-					reviewsData = reviewsData.map((review) => ({
-						...review,
-						userLiked: user.LikedReviews.includes(review.id),
-						userDisliked: user.DislikedReviews.includes(review.id),
-					}));
-				}
-
-				setReviews(reviewsData);
-			} catch (error) {
-				console.log("Error: ", error);
-			}
-		}
 
 		getReviews();
+
 	}, [dormId]); // Make sure to include useUser in the dependency array if it uses any state or props
 
-	const showModal = () => setShow(true);
-
+	const showModal = () => {
+		if(user){
+			setShow(true);
+		}else {
+			toast.error("Not loggged in!")
+		}
+	}
 	const handleRatingChange = (newRating) => {
 		setRating(newRating);
 	};
@@ -151,22 +160,9 @@ const DormPages = ({ dormId }) => {
 				} else {
 					const responseData = await response.json();
 					console.log("Response from the server:", responseData);
-
-					let updatedReviews = reviews.map((review, idx) => {
-						if (idx === index) {
-							return { ...review, likes: review.dislikes + 1 };
-						}
-						return review;
-					});
-
-					setUser((prevUser) => ({
-						...prevUser,
-						likedReviews: response.likedReviews, // only update the name property, keep everything else the same
-						dislikedReviews: response.dislikedReviews,
-					}));
-					// Update the state with the new array
-					setReviews(updatedReviews);
 				}
+
+
 
 				// Here you can handle the response, e.g., updating state or UI
 			} catch (error) {
@@ -193,14 +189,53 @@ const DormPages = ({ dormId }) => {
 		clearInputs();
 	};
 
-	function reviewPosting(rating, textReview, image) {
-		return { rating, textReview, image };
-	}
 
-	function addAReview(review) {
-		setReviews((y) => y.concat([review]));
-		setShow(false);
-		clearInputs();
+	const addAReview = async () => {
+		if(rating == '' || textReview == ''){
+			toast.error("Need a rating and review!")
+		} else {
+			console.log(user)
+			const requestBody = {
+				userId: user,
+				dormName: dormId,
+				starRating: rating,
+				imageUrl: chooseImage,
+				likes: 0,
+				dislikes: 0,
+				body: textReview
+			};
+			const url = "http://localhost:8080/api/review/addReview";
+			
+			try {
+				const response = await fetch(url, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(requestBody),
+				});
+				console.log(JSON.stringify(requestBody))
+
+				if (!response.ok) {
+					toast.error("error adding a review")
+					console.log("Not ok add a review");
+					return;
+				} else {
+					const responseData = await response.json();
+					console.log("Response from the server:", responseData);
+				}
+
+				getReviews();
+				// Here you can handle the response, e.g., updating state or UI
+			} catch (error) {
+				console.error("Error adding a review:", error);
+				toast.error("error adding a review")
+				
+			}
+			setShow(false);
+			clearInputs();
+		}
+
 	}
 
 	const containerStyle = {
@@ -272,14 +307,7 @@ const DormPages = ({ dormId }) => {
 					<Modal.Footer>
 						<Button
 							variant='success'
-							onClick={() =>
-								addAReview(
-									reviewPosting(
-										rating,
-										textReview,
-										chooseImage
-									)
-								)
+							onClick={addAReview
 							}
 						>
 							Validate and Publish
