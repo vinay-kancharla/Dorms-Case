@@ -37,7 +37,7 @@ const Podium = ({ title }) => {
         return newparts.join(" ")
       }
     } else {
-      return label 
+      return label
     }
     return label.length > maxLength ? `${label.substring(0, maxLength - 3)}...` : label;
   };
@@ -100,13 +100,13 @@ const Podium = ({ title }) => {
     }
   }, [topThreeData]);
 
-  
+
 
 
   return (
     <div style={{ margin: '10px', width: '400px', height: '500px' }}>
       {console.log(chartData)}
-      {(Array.isArray(topThreeData) && (Object.keys(chartData).length > 0)) && 
+      {(Array.isArray(topThreeData) && (Object.keys(chartData).length > 0)) &&
       <Bar data={chartData} options={chartOptions} />}
 
     </div>
