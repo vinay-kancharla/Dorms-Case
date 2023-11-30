@@ -12,7 +12,6 @@ import "./components.css";
 import { useUser } from "../UserContext";
 import { toast } from "react-toastify";
 
-
 const DormPages = ({ dormId }) => {
 	const [show, setShow] = useState(false);
 	const [rating, setRating] = useState(0);
@@ -20,6 +19,19 @@ const DormPages = ({ dormId }) => {
 	const [reviews, setReviews] = useState([]);
 	const [chooseImage, setChooseImage] = useState(null);
 	const { user, setUser } = useUser();
+	const [photoViewerOpen, setPhotoViewerOpen] = useState(false);
+	const [currentImageUrl, setCurrentImageUrl] = useState('');
+
+	const openViewer = (url) => {
+		setPhotoViewerOpen(true);
+		setCurrentImageUrl(url)
+	};
+
+	const closeViewer = () => {
+		setPhotoViewerOpen(false);
+		setCurrentImageUrl('')
+	};
+
 	async function getReviews() {
 		try {
 			const response = await fetch(
@@ -395,18 +407,29 @@ const DormPages = ({ dormId }) => {
 										</div>
 									</div>
 									Images:
-									{review.imageUrl && (
+									{review.imageUrl ? (
+										<div>
+
+
 										<img
 											src={
 												review.imageUrl
 											}
+											onClick={() => openViewer(review.imageUrl)}
 											style={{
 												maxHeight: "300px",
 												marginTop: "5px",
 												maxWidth: "20%",
 											}}
 										/>
-									)}
+										     {photoViewerOpen && (
+												<div className="fullscreen-screen">
+												<button className="close-button" onClick={closeViewer}>Exit</button>
+												<img src={currentImageUrl} alt="Full View" className="fullscreen-photo" />
+												</div>
+											)}
+										</div>
+									):(<>Hi</>)}
 								</TableCell>
 								<br></br>
 							</TableRow>
