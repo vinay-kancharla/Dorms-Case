@@ -43,7 +43,6 @@ const DormPages = ({ dormId }) => {
 		}
 	}
 
-
 	useEffect(() => {
 
 		getReviews();
