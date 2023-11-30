@@ -46,12 +46,14 @@ public class ReviewController {
         return new ResponseEntity<>(review, HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/{reviewId}/toggleLike")
     public ResponseEntity<LikedDislikedReviewsDTO> toggleLike(@PathVariable("reviewId") UUID reviewId, @RequestBody LikeDislikeDTO likeDislikeDTO) {
         LikedDislikedReviewsDTO response = reviewService.toggleLike(reviewId, likeDislikeDTO.getUserId());
         return ResponseEntity.ok(response);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/{reviewId}/toggleDislike")
     public ResponseEntity<LikedDislikedReviewsDTO> toggleDislike(@PathVariable("reviewId") UUID reviewId, @RequestBody LikeDislikeDTO likeDislikeDTO) {
         LikedDislikedReviewsDTO response = reviewService.toggleDislike(reviewId, likeDislikeDTO.getUserId());
