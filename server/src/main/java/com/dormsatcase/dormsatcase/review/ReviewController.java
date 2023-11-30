@@ -4,13 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.dormsatcase.dormsatcase.dorm.Dorm;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +38,7 @@ public class ReviewController {
         List<ReviewDTO> reviews = reviewService.getAllReviews(dormName);
         return ResponseEntity.ok(reviews);
     }  
-    
+
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/addReview")
     public ResponseEntity<Review> addReview(@RequestBody ReviewAddDTO reviewAddDTO) {
@@ -47,22 +46,20 @@ public class ReviewController {
         return new ResponseEntity<>(review, HttpStatus.CREATED);
     }
 
+    @PostMapping("/{reviewId}/toggleLike")
+    public ResponseEntity<LikedDislikedReviewsDTO> toggleLike(@PathVariable("reviewId") UUID reviewId, @RequestBody LikeDislikeDTO likeDislikeDTO) {
+        LikedDislikedReviewsDTO response = reviewService.toggleLike(reviewId, likeDislikeDTO.getUserId());
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/{reviewId}/toggleDislike")
+    public ResponseEntity<LikedDislikedReviewsDTO> toggleDislike(@PathVariable("reviewId") UUID reviewId, @RequestBody LikeDislikeDTO likeDislikeDTO) {
+        LikedDislikedReviewsDTO response = reviewService.toggleDislike(reviewId, likeDislikeDTO.getUserId());
+        return ResponseEntity.ok(response);
+    }
+
     @DeleteMapping("/delete")
     public ResponseEntity<Void> delete(UUID reviewIdentifier) {
         return reviewService.delete(reviewIdentifier);
     }
-
-    @GetMapping("/add-like")
-    public ResponseEntity<Void> addLike(@RequestParam("reviewIdentifier") UUID reviewIdentifier,
-                                        @RequestParam("userIdentifier") UUID userIdentifier) {
-        return reviewService.addLike(reviewIdentifier, userIdentifier);
-    }
-
-    @GetMapping("/add-dislike")
-    public ResponseEntity<Void> addDislike(@RequestParam("reviewIdentifier") UUID reviewIdentifier,
-                                           @RequestParam("userIdentifier") UUID userIdentifier) {
-        return reviewService.addDislike(reviewIdentifier, userIdentifier);
-    }
-
-
 }
