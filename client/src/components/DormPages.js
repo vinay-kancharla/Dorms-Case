@@ -67,7 +67,7 @@ const DormPages = ({ dormId }) => {
 
 	const likeClicked = async (index) => {
 		let flag_disliked = false;
-		if (user && user.UUID !== "") {
+		if (user && user.userId !== "") {
 			// check to see if in disliked
 			for (let i = 0; i < user.dislikedReviews.length; i++) {
 				if (user.dislikedReviews[i] === reviews[index]) {
@@ -81,7 +81,7 @@ const DormPages = ({ dormId }) => {
 
 			const url = "http://localhost:8080/api/review/liked";
 			const requestBody = {
-				userUUID: user.UUID,
+				userUUID: user.userId,
 				reviewId: reviews[index].reviewId,
 			};
 
@@ -127,7 +127,7 @@ const DormPages = ({ dormId }) => {
 
 	const dislikeClicked = async (index) => {
 		let flag_liked = false;
-		if (user && user.UUID != "") {
+		if (user && user.userId != "") {
 			// check to see if in disliked
 			for (let i = 0; i < user.likedReviews.length; i++) {
 				if (user.dislikedReviews[i] === reviews[index]) {
@@ -141,7 +141,7 @@ const DormPages = ({ dormId }) => {
 
 			const url = "http://localhost:8080/api/review/disliked";
 			const requestBody = {
-				userUUID: user.UUID,
+				userUUID: user.userId,
 				reviewId: reviews[index].reviewId,
 			};
 
@@ -188,7 +188,7 @@ const DormPages = ({ dormId }) => {
 			  setChooseImage(base64Representation); // Store the Base64 string in the state
 			  console.log(base64Representation)
 			};
-			reader.readAsDataURL(file);
+			fileReader.readAsDataURL(file);
 		  }
 		setChooseImage(file);
 	};
@@ -203,12 +203,12 @@ const DormPages = ({ dormId }) => {
 		if(rating == '' || textReview == ''){
 			toast.error("Need a rating and review!")
 		} else {
-			console.log(user)
+			console.log(user.userId)
 			const requestBody = {
-				userId: user,
+				userId: user.userId,
 				dormName: dormId,
 				starRating: rating,
-				imageUrl: chooseImage,
+				imgBase64: chooseImage,
 				likes: 0,
 				dislikes: 0,
 				body: textReview
@@ -395,7 +395,7 @@ const DormPages = ({ dormId }) => {
 										</div>
 									</div>
 									Images:
-									{review.image && (
+									{review.imageUrl && (
 										<img
 											src={
 												review.imageUrl
