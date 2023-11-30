@@ -9,7 +9,7 @@ function HomePage() {
   return (
     <div>
       <NavigationBar />
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '100px' }}>
       <PodiumGraph data={firstyearrankings} title="First-Year" />
       <div></div>
       <PodiumGraph data={secondyearrankings} title="Second-Year" />

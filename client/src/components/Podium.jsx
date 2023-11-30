@@ -59,7 +59,7 @@ const Podium = ({ data, title }) => {
   };
 
   return (
-    <div style={{ margin: '10px', width: '300px', height: '300px' }}>
+    <div style={{ margin: '10px', width: '400px', height: '400px' }}>
       <Bar data={chartData} options={chartOptions} />
 
     </div>
