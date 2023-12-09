@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import dorms from "../dummy_data/dorms.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faBars,
@@ -22,11 +21,46 @@ import "./components.css"
 
 
 const NavigationBar = () => {
-	const options = dorms;
+
+	const [options, setOptions] = useState([])
 	const [isLoginOpen, setLoginOpen] = useState(false);
 	const [isSignupOpen, setSignupOpen] = useState(false);
 	const [isSearchSeen, setSearchSeen] = useState(false);
 	const { user: userIdentifier, setUser } = useUser();
+	const experiences = ["First Year Experience", "Second Year Experience", "Upperclass Experience"]
+
+	useEffect(() => {
+		async function getDorms(experience) {
+		  try {
+			const response = await fetch(
+			  `http://localhost:8080/api/dorm/getAll?experience=${experience}`
+			);
+
+			const data = await response.json();
+			console.log("data " + JSON.stringify(data))
+			const names = data.map(item => item.name);
+			return names
+		  } catch (error) {
+			console.log("Error: ", error);
+		  }
+		}
+		async function getAll() {
+		  try {
+			let dormsByExperience = {};
+
+			for (let experience of experiences) {
+			  const names = await getDorms(experience);
+			  dormsByExperience[experience] = names;
+			}
+	  
+			setOptions(dormsByExperience);
+		  } catch (error) {
+			console.error('Error fetching dorms:', error);
+		  }
+		}
+	  
+		getAll();
+	  }, []);
 
 	const handleDormPage = (dorm) => {
 		console.log(`Navigating to the ${dorm} page`);
@@ -61,6 +95,8 @@ const NavigationBar = () => {
 			console.log("account login unsuccessful");
 		}
 	};
+
+
 
 	const logout = () => {
 		setUser(null);

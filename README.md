@@ -3,8 +3,32 @@
 ## Introduction: 
 The purpose of Dorms @ Case is to aid current or prospective student with choosing the best dorms to fit their needs. It's an unbiased application where current or prospective students can view what student’s experiences were like in dorms that they lived in the past or spent a lot of time in. The application allows users to seamlessly see the rankings of the best dorms for each of the experiences (First-year, Second-year, and Upperclass). Furthermore, users can also see specific reviews for each of the dorm by visiting each of the individual’s dorm pages as well as see real time pictures of the dorm to get an idea of what it looks like.
 
-## System Requirements:
+## Installing 
+Open up a terminal and navigate to the repository directory
+```
+cd client
+```
 
+```
+npm install
+```
+```
+npm start
+```
+
+Open up another terminal
+```
+cd server
+```
+
+```
+mvn clean install
+```
+```
+mvn spring-boot:run
+```
+**Note! If you do not have the database key, you will not be able to mvn clean install.**
+**Please contact us if you would like to use the database functionality**
 
 ## How to Use:
 

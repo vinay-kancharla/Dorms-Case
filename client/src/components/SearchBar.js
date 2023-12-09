@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import dorms from "../dummy_data/alldorms.json";
 import { Link } from "react-router-dom";
 import "./components.css"
 const SearchBar = (props) => {
@@ -7,23 +6,23 @@ const SearchBar = (props) => {
     const [entries, setEntries] = useState([])
     const [filteredDorms, setFilteredDorms]  = useState([])
     const [showList, setShowList] = useState(false)
-    const experiences = ["FIRST_YEAR", "SECOND_YEAR", "UPPER_CLASS"]
+    const experiences = ["First Year Experience", "Second Year Experience", "Upperclass Experience"]
 
-    useEffect(() => {
-        // Fetch the dorms data from the backend
-        // const fetchDorms = async () => {
-        //   try {
-        //     		const response = await fetch(
-					// `http://localhost:8080/api/review/getAll`
-                    // );
-        //     const data = await response.json();
-        //     setDorms(data);
-        //   } catch (error) {
-        //     console.error('Error fetching dorm data:', error);
-        //   }
-        setEntries(dorms.AllDorms)
+    // useEffect(() => {
+    //     // Fetch the dorms data from the backend
+    //     // const fetchDorms = async () => {
+    //     //   try {
+    //     //     		const response = await fetch(
+		// 			// `http://localhost:8080/api/review/getAll`
+    //                 // );
+    //     //     const data = await response.json();
+    //     //     setDorms(data);
+    //     //   } catch (error) {
+    //     //     console.error('Error fetching dorm data:', error);
+    //     //   }
+    //     setEntries(dorms.AllDorms)
         
-        }, []);
+    //     }, []);
 
      useEffect(() => {
           async function getDorms(experience) {
@@ -33,18 +32,29 @@ const SearchBar = (props) => {
               );
 
               const data = await response.json();
-              return data
+              console.log("data " + JSON.stringify(data))
+              const names = data.map(item => item.name);
+              return names
             } catch (error) {
               console.log("Error: ", error);
             }
           }
-          let res = []
-          for(let i = 0; i < experiences.length; i++){
-              res.push(getDorms(experiences[i]))
+          async function getAll() {
+            try {
+              let alldorms = await Promise.all(experiences.map(exp => getDorms(exp)));
+              let names = alldorms.flat();
+              setEntries(names);
+            } catch (error) {
+              console.error('Error fetching dorms:', error);
+            }
           }
+        
+          getAll();
         }, []);
+      
 
-    const updatingSearchResults = (event) => {
+
+    const updatingSearchResults = async (event) => {
         
         console.log("entries" + entries)
         const predicate = event.target.value
